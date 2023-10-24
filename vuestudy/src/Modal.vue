@@ -19,7 +19,7 @@ export default {
   },
   methods : {
     closeModal() {
-        this.$emit('closeModal', this.원룸들.idx)
+        this.$emit('closeModal')
     }
   }
 }
