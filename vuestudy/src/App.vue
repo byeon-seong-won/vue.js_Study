@@ -3,26 +3,19 @@
 
 <template>
   <div> 
-    <discount :데이터이름="[1,2,3]"></discount>
-    <!-- <div class="black-bg" v-if="modal == true">
-      <div class="white-bg">
-        <img :src="원룸들[idx].image" class="room-img">
-        <h4>{{원룸들[idx].title}}</h4>
-        <p>{{원룸들[idx].price}}만원</p>
-        <button @click="modal=false">닫기</button>
-      </div>
-    </div> -->
-    <modal :원룸들="원룸들"></modal>
+    <Discount :데이터이름="[1,2,3]"/>
+    <Modal :원룸들="원룸들" :idx="idx" :modal="modal"/>
     <div class="menu">
       <a v-for="작명 in 3" :key="작명">Home</a>
     </div>
-    <div class="product" v-for="(room,i) in 원룸들" :key="i">
+    <Card :원룸="원룸들[i]" v-for="(a,i) in 원룸들" :key="i"/>
+    <!-- <div class="product" v-for="(room,i) in 원룸들" :key="i">
       <img :src="room.image" class="room-img">
       <h4 @click="modal = true; idx=i">{{원룸들[i].title}}</h4>
       <p>{{원룸들[i].price}}만원</p>
       <button @click="신고수[i]++">허위매물신고</button>
       <span>신고수 : {{신고수[i]}}</span>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -30,6 +23,7 @@
 import data from './assets/data.js'
 import Discount from './Discount.vue' 
 import Modal from './Modal.vue'
+import Card from './Card.vue'
 
 export default {
   name : 'App',
@@ -37,7 +31,6 @@ export default {
     return {
       price1 : 60,
       메뉴들 : ['Home', 'Shop', 'About'],
-      products : ['역삼동원룸', '천호동원룸', '마포구원룸'],
       신고수 : [0,1,2,3,4,5],
       idx : 0,
       modal : false,
@@ -47,6 +40,7 @@ export default {
   components : {
     Discount,
     Modal,
+    Card
   }
 }
 </script>
