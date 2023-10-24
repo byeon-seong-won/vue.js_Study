@@ -8,8 +8,13 @@
 
 <script>
 export default {
-  props : {
-    원룸 : Object
-  }
+    props : {
+      원룸 : Object
+    },
+    // methods : {
+    //     clickEvent() {
+    //         this.$emit('openModal', this.원룸.id)
+    //     }
+    // }
 }
 </script>
