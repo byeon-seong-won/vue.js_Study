@@ -2,7 +2,8 @@
 
 
 <template>
-  <div>
+  <div> 
+    <discount></discount>
     <div class="black-bg" v-if="modal == true">
       <div class="white-bg">
         <img :src="원룸들[idx].image" class="room-img">
@@ -11,11 +12,9 @@
         <button @click="modal=false">닫기</button>
       </div>
     </div>
-
     <div class="menu">
       <a v-for="작명 in 3" :key="작명">Home</a>
     </div>
-    
     <div class="product" v-for="(room,i) in 원룸들" :key="i">
       <img :src="room.image" class="room-img">
       <h4 @click="modal = true; idx=i">{{원룸들[i].title}}</h4>
@@ -23,13 +22,13 @@
       <button @click="신고수[i]++">허위매물신고</button>
       <span>신고수 : {{신고수[i]}}</span>
     </div>
-
   </div>
 </template>
 
-
 <script>
 import data from './assets/data.js'
+import Discount from './Discount.vue' 
+
 export default {
   name : 'App',
   data(){
@@ -42,10 +41,12 @@ export default {
       modal : false,
       원룸들 : data
     }
+  },
+  components : {
+    Discount,
   }
 }
 </script>
-
 
 <style>
 * {font-family: 'Noto sans KR', sans-serif; letter-spacing: -0.03em;font-size: 18px;}
