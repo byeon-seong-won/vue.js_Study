@@ -8,7 +8,7 @@
     <div class="menu">
       <a v-for="작명 in 3" :key="작명">Home</a>
     </div>
-    <Card :원룸="원룸들[i]" v-for="(a,i) in 원룸들" :key="i"/>
+    <Card @openModal="modal = true; idx = $event" :원룸="원룸들[i]" v-for="(a,i) in 원룸들" :key="i"/>
     <!-- <div class="product" v-for="(room,i) in 원룸들" :key="i">
       <img :src="room.image" class="room-img">
       <h4 @click="modal = true; idx=i">{{원룸들[i].title}}</h4>
