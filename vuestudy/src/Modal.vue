@@ -4,7 +4,7 @@
         <img :src="원룸들[idx].image" class="room-img">
         <h4>{{원룸들[idx].title}}</h4>
         <p>{{원룸들[idx].price}}만원</p>
-        <button @click="modal=false">닫기</button>
+        <!-- <button @click="modal=false">닫기</button> -->
       </div>
     </div>
 </template>
@@ -14,6 +14,8 @@ export default {
   name : 'Modal',
   props : {
     원룸들 : Array,
+    modal : Boolean,
+    idx : Number
   }
 }
 </script>
