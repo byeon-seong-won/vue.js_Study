@@ -11,16 +11,18 @@
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
 
+<script>
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name : 'App',
+  data(){
+    return {
+      price1 : 60
+    }
   }
 }
 </script>
+
 
 <style>
 #app {
