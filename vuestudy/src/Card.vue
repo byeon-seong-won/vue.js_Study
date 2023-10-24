@@ -1,15 +1,15 @@
 <template>
-    <div class="discount">
-      <h4>지금 결제하면 20% 할인</h4>
-    </div>
+  <div>
+    <img :src="원룸.image" class="room-img">
+    <h4 @click="$emit('openModal')"> {{원룸.title}} </h4>
+    <p>{{원룸.price}} 원</p>
+   </div>
 </template>
 
 <script>
 export default {
-  name : 'Discount',
-
+  props : {
+    원룸 : Object
+  }
 }
 </script>
-<style>
-  
-</style>
