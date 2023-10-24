@@ -3,15 +3,16 @@
 
 <template>
   <div> 
-    <discount></discount>
-    <div class="black-bg" v-if="modal == true">
+    <discount :데이터이름="[1,2,3]"></discount>
+    <!-- <div class="black-bg" v-if="modal == true">
       <div class="white-bg">
         <img :src="원룸들[idx].image" class="room-img">
         <h4>{{원룸들[idx].title}}</h4>
         <p>{{원룸들[idx].price}}만원</p>
         <button @click="modal=false">닫기</button>
       </div>
-    </div>
+    </div> -->
+    <modal :원룸들="원룸들"></modal>
     <div class="menu">
       <a v-for="작명 in 3" :key="작명">Home</a>
     </div>
@@ -28,6 +29,7 @@
 <script>
 import data from './assets/data.js'
 import Discount from './Discount.vue' 
+import Modal from './Modal.vue'
 
 export default {
   name : 'App',
@@ -44,6 +46,7 @@ export default {
   },
   components : {
     Discount,
+    Modal,
   }
 }
 </script>
