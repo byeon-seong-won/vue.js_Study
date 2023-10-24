@@ -4,7 +4,7 @@
 <template>
   <div> 
     <Discount :데이터이름="[1,2,3]"/>
-    <Modal :원룸들="원룸들" :idx="idx" :modal="modal"/>
+    <Modal @closeModal="modal = false; idx = $event" :원룸들="원룸들" :idx="idx" :modal="modal"/>
     <div class="menu">
       <a v-for="작명 in 3" :key="작명">Home</a>
     </div>
