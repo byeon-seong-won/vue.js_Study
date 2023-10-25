@@ -1,21 +1,20 @@
 
-
-
 <template>
   <div> 
     <Discount/>
-    <Modal @closeModal="modal = false;" :원룸들="원룸들" :idx="idx" :modal="modal"/>
-    <div class="menu">
-      <a v-for="작명 in 3" :key="작명">Home</a>
-    </div>
-    <Card @openModal="modal = true; idx = $event" :원룸="원룸들[i]" v-for="(a,i) in 원룸들" :key="i"/>
-    <!-- <div class="product" v-for="(room,i) in 원룸들" :key="i">
-      <img :src="room.image" class="room-img">
-      <h4 @click="modal = true; idx=i">{{원룸들[i].title}}</h4>
-      <p>{{원룸들[i].price}}만원</p>
-      <button @click="신고수[i]++">허위매물신고</button>
-      <span>신고수 : {{신고수[i]}}</span>
+    <!-- animation -->
+    <!-- <div class="start" :class="{ end : modal }">
+      <Modal @closeModal="modal = false;" :원룸들="원룸들" :idx="idx" :modal="modal"/>
     </div> -->
+    <Transition name="fade">
+      <Modal @closeModal="modal = false;" :원룸들="원룸들" :idx="idx" :modal="modal"/>
+    </Transition>
+    <div class="menu">
+      <a v-for="menu in menus" :key="menu">{{menu}}</a>
+    </div>
+    <button @click="priceSort()">가격순정렬</button>
+    <button @click="sortBack()">되돌리기</button>
+    <Card @openModal="modal = true; idx = $event" :원룸="원룸들[i]" v-for="(a,i) in 원룸들" :key="i"/>
   </div>
 </template>
 
@@ -29,8 +28,7 @@ export default {
   name : 'App',
   data(){
     return {
-      price1 : 60,
-      메뉴들 : ['Home', 'Shop', 'About'],
+      menus : ['Home', 'Shop', 'About'],
       신고수 : [0,1,2,3,4,5],
       idx : 0,
       modal : false,
@@ -42,6 +40,16 @@ export default {
     Discount,
     Modal,
     Card
+  },
+  methods : {
+    priceSort() {
+      this.원룸들.sort(function(a,b) {
+        return a.price - b.price
+      })
+    },
+    sortBack() {
+      
+    }
   }
 }
 </script>
@@ -65,4 +73,17 @@ div {box-sizing: border-box;}
 .room-img {width: 100%;}
 .product {background-color: #eee;margin-bottom: 40px;padding-bottom: 20px;}
 button {background: crimson;color: #fff;border: none;padding: 10px;border-radius: 10px;cursor: pointer;margin-right: 10px;}
+.start {opacity: 0;transition: all 1s;}
+.end {opacity: 1;}
+
+
+/* Transiton */
+.fade-enter-from {opacity: 0;}
+.fade-enter-active {transition: all 1s;}
+.fade-enter-to {opacity: 1;}
+
+
+
+
+
 </style>
