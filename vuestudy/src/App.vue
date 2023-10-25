@@ -2,13 +2,17 @@
 <template>
   <div class="wrap">
       <div class="menu">
-          <h1><a href="#none">BYSEONG</a></h1>
+        <router-link to="/" class="xi-home"></router-link>
+        <h1><a href="#none">BYSEONG</a></h1>
+        <router-link to="/" class="xi-border-color"></router-link>
       </div>
       <div class="content">
         <h1>My Daily Life</h1>        
         <p>Vue로 만들었음</p>
-        <!-- <List :list="lists[i]" v-for="(list, i) in lists" :key="i"/>
-        <router-link to="/detail">이동하기</router-link>-->
+        <!-- <List :list="lists[i]" v-for="(list, i) in lists" :key="i"/>-->
+
+        <router-link to="/detail">상세페이지 이동하기</router-link>
+        <router-link to="/list">리스트 이동하기</router-link>
         <router-view :lists="lists"></router-view> 
         <!-- <List :lists="lists"/> -->
       </div>
@@ -83,6 +87,7 @@ img {vertical-align:top;font-size:0;border:0;}
   width: 100%;
   height: 100vh;
   background-image: url("./assets/main.png");
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -94,10 +99,10 @@ img {vertical-align:top;font-size:0;border:0;}
   /* background-color:rgba(0, 0, 0,0.3); */
   border-radius: 2rem;
   overflow: hidden;
-  padding: 60px 40px;
+  padding: 70px;
 }
-.content>h1 {font-size: 50px;text-align: left;font-family: 'Candal', sans-serif;color: #222;text-transform: uppercase;margin-bottom: 50px;}
-.content>div {padding: 20px;background-color: #222;color: #ddd;margin-bottom: 10px;border-radius: 10px;}
+.content>h1 {font-size: 50px;text-align: left;font-family: 'Candal', sans-serif;color: #444;text-transform: uppercase;margin-bottom: 50px;}
+.content>div {cursor: pointer;padding: 20px;background-color: #333;color: #eee;margin-bottom: 20px;border-radius: 10px;}
 
 
 
@@ -106,7 +111,7 @@ img {vertical-align:top;font-size:0;border:0;}
 
 
 #app {-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
-.menu {background : transparent;padding : 15px;border-radius : 5px;text-align: center;}
+.menu {width: calc(100% - 80px);margin: 0 auto;display: flex;justify-content: space-between;background : transparent;padding : 15px;border-radius : 5px;text-align: center;}
 .menu a {color : #444;padding : 10px;font-weight: bold;font-size: 20px;}
 body {margin : 0;}
 div {box-sizing: border-box;}
