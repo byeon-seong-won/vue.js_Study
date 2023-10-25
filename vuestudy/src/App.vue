@@ -1,28 +1,20 @@
 
 <template>
-  <div> 
-    <Discount/>
-    <!-- animation -->
-    <!-- <div class="start" :class="{ end : modal }">
-      <Modal @closeModal="modal = false;" :원룸들="원룸들" :idx="idx" :modal="modal"/>
-    </div> -->
-    <Transition name="fade">
-      <Modal @closeModal="modal = false;" :원룸들="원룸들" :idx="idx" :modal="modal"/>
-    </Transition>
-    <div class="menu">
-      <a v-for="menu in menus" :key="menu">{{menu}}</a>
-    </div>
-    <button @click="priceSort()">가격순정렬</button>
-    <button @click="sortBack()">되돌리기</button>
-    <Card @openModal="modal = true; idx = $event" :원룸="원룸들[i]" v-for="(a,i) in 원룸들" :key="i"/>
+  <div class="wrap">
+      <div class="menu">
+          <h1><a href="#none">BYSEONG</a></h1>
+      </div>
+      <div class="content">
+        <h1>My Daily Life</h1>
+        <List :list="lists[i]" v-for="(list, i) in lists" :key="i"/>
+      </div>
   </div>
 </template>
 
 <script>
 import data from './assets/data.js'
-import Discount from './Discount.vue' 
-import Modal from './Modal.vue'
-import Card from './Card.vue'
+import List from './List.vue'
+
 
 export default {
   name : 'App',
@@ -32,15 +24,13 @@ export default {
       신고수 : [0,1,2,3,4,5],
       idx : 0,
       modal : false,
-      원룸들 : [...data],
+      lists : [...data],
       원룸들복제본 : [...data],
       오브젝트 : { name : "byeon", age : 29 }
     }
   },
   components : {
-    Discount,
-    Modal,
-    Card
+    List
   },
   methods : {
     priceSort() {
@@ -56,17 +46,57 @@ export default {
 </script>
 
 <style>
-* {font-family: 'Noto sans KR', sans-serif; letter-spacing: -0.03em;font-size: 18px;}
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+/* common style */
+*{ margin: 0;padding: 0;font-family: 'roboto','Noto Sans KR', sans-serif; letter-spacing: -0.03em}
+html, body {width: 100%;height: 100%;position: relative;}
+html {overflow-y: scroll; overflow-x: hidden; } 
+article,aside,details,summary,figcaption,figure,
+footer,header,hgroup,main,nav,section {display: block;}
+li {list-style-type: none;} 
+a {text-decoration: none;color: inherit;} 
+table {border-collapse: collapse;}
+input, select {vertical-align: middle;}
+button,
+input[type=button],
+input[type=submit],
+input[type=reset] {cursor: pointer;}
+button,input {outline: none;}
+h1,h2,h3,h4,h5,h6 {font-size:100%; font-weight: normal; margin-top: 0; }
+img {vertical-align:top;font-size:0;border:0;}
+/* /// common style /// */
+
+
+
+.wrap {
+  width: 100%;
+  height: 100vh;
+  background-image: url("./assets/main.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.menu {background : darkslateblue;padding : 15px;border-radius : 5px;}
-.menu a {color : white;padding : 10px;}
+.content {
+  width: calc(100% - 80px);
+  height: calc(100vh - 80px);
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255,0.5);
+  /* background-color:rgba(0, 0, 0,0.3); */
+  border-radius: 2rem;
+  overflow: hidden;
+  padding: 80px 40px;
+}
+.content>h1 {font-size: 50px;text-align: left;font-family: 'Candal', sans-serif;color: #222;text-transform: uppercase;margin-bottom: 50px;}
+.content>div {padding: 20px;background-color: #222;color: #ddd;margin-bottom: 10px;border-radius: 10px;}
+
+
+
+
+
+
+
+#app {-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
+.menu {background : transparent;padding : 15px;border-radius : 5px;text-align: center;}
+.menu a {color : #444;padding : 10px;font-weight: bold;font-size: 20px;}
 body {margin : 0;}
 div {box-sizing: border-box;}
 .black-bg {width: 100%; height:100%;background: rgba(0,0,0,0.5);position: fixed; padding: 20px;}
