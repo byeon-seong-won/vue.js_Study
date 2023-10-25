@@ -3,7 +3,7 @@
 
 <template>
   <div> 
-    <Discount :데이터이름="[1,2,3]"/>
+    <Discount/>
     <Modal @closeModal="modal = false;" :원룸들="원룸들" :idx="idx" :modal="modal"/>
     <div class="menu">
       <a v-for="작명 in 3" :key="작명">Home</a>
@@ -34,7 +34,8 @@ export default {
       신고수 : [0,1,2,3,4,5],
       idx : 0,
       modal : false,
-      원룸들 : data
+      원룸들 : data,
+      오브젝트 : { name : "byeon", age : 29 }
     }
   },
   components : {
