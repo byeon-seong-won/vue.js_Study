@@ -32,7 +32,8 @@ export default {
       신고수 : [0,1,2,3,4,5],
       idx : 0,
       modal : false,
-      원룸들 : data,
+      원룸들 : [...data],
+      원룸들복제본 : [...data],
       오브젝트 : { name : "byeon", age : 29 }
     }
   },
@@ -48,7 +49,7 @@ export default {
       })
     },
     sortBack() {
-      
+      this.원룸들 = [...this.원룸들복제본]
     }
   }
 }
