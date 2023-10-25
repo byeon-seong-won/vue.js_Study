@@ -36,6 +36,10 @@ export default {
         this.month = 1;
       }
     }
+  },
+  // mount후에 실행 (서버에서 데이터 가져옴)
+  mounted() {
+
   }
 }
 </script>
