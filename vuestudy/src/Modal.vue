@@ -26,18 +26,25 @@ export default {
   },
   data() {
     return {
-      month : 0,
+      month : "",
     }
   },
   watch : {
     month(a) {
-      if(a > 12) {
-        alert("경고문임")
+      if(isNaN(a) == true) {
+        alert("숫자만 입력하세요")
+        this.month = 1;
       }
     }
   }
 }
 </script>
+
+
 <style>
-  
+
+
+
+
+
 </style>
