@@ -8,12 +8,22 @@
       </div>
       <div class="content">
         <h1>My Daily Life</h1>        
-        <p>Vue로 만들었음</p>
-        <!-- <List :list="lists[i]" v-for="(list, i) in lists" :key="i"/>-->
-
-        <router-link to="/detail">상세페이지 이동하기</router-link>
-        <router-link to="/list">리스트 이동하기</router-link>
+        <div>
+          <img src="./assets/main.png" alt="mainImg">
+          <div class="rightBtn">
+            <button>블로그 글 보러가기</button>
+            <button>블로그 글 작성하기</button>
+          </div>
+        </div>
+        
         <router-view :lists="lists"></router-view> 
+
+
+        <!-- <List :list="lists[i]" v-for="(list, i) in lists" :key="i"/>-->
+<!-- 
+        <router-link to="/detail">상세페이지 이동하기</router-link>
+        <router-link to="/list">리스트 이동하기</router-link> -->
+        
         <!-- <List :lists="lists"/> -->
       </div>
 
@@ -85,27 +95,32 @@ img {vertical-align:top;font-size:0;border:0;}
 
 .wrap {
   width: 100%;
-  height: 100vh;
-  background-image: url("./assets/main.png");
+  height: 100%;
+  background-color: #fff;
+  /* background-image: url("./assets/main.png");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 .content {
   width: calc(100% - 80px);
-  height: calc(100vh - 80px);
+  height: calc(100% - 80px);
   margin: 0 auto;
-  background-color: rgba(255, 255, 255,0.5);
-  /* background-color:rgba(0, 0, 0,0.3); */
   border-radius: 2rem;
   overflow: hidden;
   padding: 70px;
+  background-color: #eee;
+  /* background-image: url("./assets/main.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 .content>h1 {font-size: 50px;text-align: left;font-family: 'Candal', sans-serif;color: #444;text-transform: uppercase;margin-bottom: 50px;}
-.content>div {cursor: pointer;padding: 20px;background-color: #333;color: #eee;margin-bottom: 20px;border-radius: 10px;}
-
-
-
+.content>div {display: flex;justify-content: space-between;border: 1px solid #000;}
+.content>div>div {cursor: pointer;padding: 20px;background-color: #333;color: #eee;margin-bottom: 20px;border-radius: 10px;}
+.content>div>img {border-radius: 5rem;}
+.content>div>.rightBtn {display: flex;flex-direction: column;}
+.content>div>.rightBtn button {display: block;padding: 30px;color: #fff;background-color: #333;}
 
 
 
