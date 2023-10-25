@@ -5,15 +5,28 @@
           <h1><a href="#none">BYSEONG</a></h1>
       </div>
       <div class="content">
-        <h1>My Daily Life</h1>
-        <List :list="lists[i]" v-for="(list, i) in lists" :key="i"/>
+        <h1>My Daily Life</h1>        
+        <p>Vue로 만들었음</p>
+        <!-- <List :list="lists[i]" v-for="(list, i) in lists" :key="i"/>
+        <router-link to="/detail">이동하기</router-link>-->
+        <router-view :lists="lists"></router-view> 
+        <!-- <List :lists="lists"/> -->
       </div>
+
+
+
+
+      
+      <!-- <Detail :detail="lists"></Detail> -->
+
+  
   </div>
 </template>
 
 <script>
 import data from './assets/data.js'
-import List from './List.vue'
+
+
 
 
 export default {
@@ -24,13 +37,12 @@ export default {
       신고수 : [0,1,2,3,4,5],
       idx : 0,
       modal : false,
-      lists : [...data],
-      원룸들복제본 : [...data],
+      lists : data,
       오브젝트 : { name : "byeon", age : 29 }
     }
   },
   components : {
-    List
+    // List
   },
   methods : {
     priceSort() {
@@ -46,7 +58,6 @@ export default {
 </script>
 
 <style>
-
 /* common style */
 *{ margin: 0;padding: 0;font-family: 'roboto','Noto Sans KR', sans-serif; letter-spacing: -0.03em}
 html, body {width: 100%;height: 100%;position: relative;}
@@ -83,7 +94,7 @@ img {vertical-align:top;font-size:0;border:0;}
   /* background-color:rgba(0, 0, 0,0.3); */
   border-radius: 2rem;
   overflow: hidden;
-  padding: 80px 40px;
+  padding: 60px 40px;
 }
 .content>h1 {font-size: 50px;text-align: left;font-family: 'Candal', sans-serif;color: #222;text-transform: uppercase;margin-bottom: 50px;}
 .content>div {padding: 20px;background-color: #222;color: #ddd;margin-bottom: 10px;border-radius: 10px;}
