@@ -1,25 +1,16 @@
 
 <template>
   <div class="wrap">
-      <div class="menu">
-        <h1><a href="#none">BYSEONG</a></h1>
-        <div>
-          <router-link to="/list">블로그 글 보러가기</router-link>
-          <router-link to="/">블로그 글 작성하기</router-link>
-        </div>
-      </div>
 
+    <!-- menu -->
+    <Menu/>
 
-      <!-- main -->
-      <router-view :lists="lists"></router-view>    
-      <!-- list -->
-      <router-view :lists="lists"></router-view> 
-     
+    <!-- main -->
+    <router-view :lists="lists"></router-view>    
+    <!-- list -->
+    <router-view :lists="lists"></router-view> 
 
-
-
-      
-      <!-- <Detail :detail="lists"></Detail> -->
+    <!-- <Detail :detail="lists"></Detail> -->
 
   
   </div>
@@ -27,11 +18,12 @@
 
 <script>
 import data from './assets/data.js'
+import Menu from './components/Menucomp.vue'
+
 export default {
   name : 'App',
   data(){
     return {
-      menus : ['Home', 'Shop', 'About'],
       신고수 : [0,1,2,3,4,5],
       idx : 0,
       modal : false,
@@ -40,7 +32,7 @@ export default {
     }
   },
   components : {
-    // List
+    Menu
   },
   methods : {
     priceSort() {
@@ -92,11 +84,6 @@ img {vertical-align:top;font-size:0;border:0;}
 
 
 #app {-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
-.menu {width: calc(100% - 80px);margin: 0 auto;display: flex;justify-content: space-between;align-items: center;background : transparent;padding : 15px;border-radius : 5px;text-align: center;}
-.menu>h1>a {color : #444;padding : 10px;font-weight: 500;font-size: 20px;display: inline-block;text-align: left;}
-.menu>div {display: flex;flex: 3;justify-content: end;}
-.menu>div>a {color: #333;font-size: 18px;}
-.menu>div>a:last-child {display: inline-block;margin-left: 50px;}
 
 body {margin : 0;}
 div {box-sizing: border-box;}
