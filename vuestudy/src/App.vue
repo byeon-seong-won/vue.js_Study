@@ -2,31 +2,19 @@
 <template>
   <div class="wrap">
       <div class="menu">
-        <router-link to="/" class="xi-home"></router-link>
         <h1><a href="#none">BYSEONG</a></h1>
-        <router-link to="/" class="xi-border-color"></router-link>
-      </div>
-      <div class="content">
-        <h1>My Daily Life</h1>        
         <div>
-          <img src="./assets/main.png" alt="mainImg">
-          <div class="rightBtn">
-            <button>블로그 글 보러가기</button>
-            <button>블로그 글 작성하기</button>
-          </div>
+          <router-link to="/list">블로그 글 보러가기</router-link>
+          <router-link to="/">블로그 글 작성하기</router-link>
         </div>
-        
-        <router-view :lists="lists"></router-view> 
-
-
-        <!-- <List :list="lists[i]" v-for="(list, i) in lists" :key="i"/>-->
-<!-- 
-        <router-link to="/detail">상세페이지 이동하기</router-link>
-        <router-link to="/list">리스트 이동하기</router-link> -->
-        
-        <!-- <List :lists="lists"/> -->
       </div>
 
+
+      <!-- main -->
+      <router-view :lists="lists"></router-view>    
+      <!-- list -->
+      <router-view :lists="lists"></router-view> 
+     
 
 
 
@@ -39,10 +27,6 @@
 
 <script>
 import data from './assets/data.js'
-
-
-
-
 export default {
   name : 'App',
   data(){
@@ -102,32 +86,18 @@ img {vertical-align:top;font-size:0;border:0;}
   background-repeat: no-repeat;
   background-size: cover; */
 }
-.content {
-  width: calc(100% - 80px);
-  height: calc(100% - 80px);
-  margin: 0 auto;
-  border-radius: 2rem;
-  overflow: hidden;
-  padding: 70px;
-  background-color: #eee;
-  /* background-image: url("./assets/main.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover; */
-}
-.content>h1 {font-size: 50px;text-align: left;font-family: 'Candal', sans-serif;color: #444;text-transform: uppercase;margin-bottom: 50px;}
-.content>div {display: flex;justify-content: space-between;border: 1px solid #000;}
-.content>div>div {cursor: pointer;padding: 20px;background-color: #333;color: #eee;margin-bottom: 20px;border-radius: 10px;}
-.content>div>img {border-radius: 5rem;}
-.content>div>.rightBtn {display: flex;flex-direction: column;}
-.content>div>.rightBtn button {display: block;padding: 30px;color: #fff;background-color: #333;}
+
 
 
 
 
 #app {-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
-.menu {width: calc(100% - 80px);margin: 0 auto;display: flex;justify-content: space-between;background : transparent;padding : 15px;border-radius : 5px;text-align: center;}
-.menu a {color : #444;padding : 10px;font-weight: bold;font-size: 20px;}
+.menu {width: calc(100% - 80px);margin: 0 auto;display: flex;justify-content: space-between;align-items: center;background : transparent;padding : 15px;border-radius : 5px;text-align: center;}
+.menu>h1>a {color : #444;padding : 10px;font-weight: 500;font-size: 20px;display: inline-block;text-align: left;}
+.menu>div {display: flex;flex: 3;justify-content: end;}
+.menu>div>a {color: #333;font-size: 18px;}
+.menu>div>a:last-child {display: inline-block;margin-left: 50px;}
+
 body {margin : 0;}
 div {box-sizing: border-box;}
 .black-bg {width: 100%; height:100%;background: rgba(0,0,0,0.5);position: fixed; padding: 20px;}
