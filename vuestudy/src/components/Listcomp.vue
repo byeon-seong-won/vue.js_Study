@@ -39,14 +39,14 @@ export default {
   border-radius: 2rem;
   overflow: hidden;
   padding: 70px;
-  background-image: linear-gradient(rgba(0, 0, 0,0.5), rgba(0, 0, 0,0.5)),url("../assets/main.png");
+  background-image: linear-gradient(rgba(0, 0, 0,0.3), rgba(0, 0, 0,0.4)),url("../assets/main.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   }
   .listcont>h1 {font-size: 8rem;text-align: left;font-family: 'Acme', sans-serif;color: #fff;text-transform: uppercase;margin-bottom: 50px;}
-  .listcont>div {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}
-  .listcont>div>div {padding: 30px 20px;background-color: #eee;color: #333;border-radius: 10px;}
+  .listcont>div {display: grid;grid-template-columns: repeat(3, 1fr);gap: 30px;}
+  .listcont>div>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 10px;font-size: 20px;}
 
 </style>
