@@ -27,12 +27,21 @@ export default {
   background-size: cover;
   position: relative;
 }
-.content>h1 {font-size: 12rem;text-align: left;font-family: 'Acme', sans-serif;color: #fff;text-transform: uppercase;margin-bottom: 50px;position: absolute;top: 50%;
+.content>h1 {text-align: center;font-size: 12rem;font-family: 'Acme', sans-serif;color: #fff;text-transform: uppercase;margin-bottom: 50px;position: absolute;top: 50%;
 left: 50%;transform: translate(-50%,-50%);}
 /* .content>div {display: flex;justify-content: space-between;border: 1px solid rgb(0, 0, 0);} */
 .content>div>div {cursor: pointer;padding: 20px;background-color: #333;color: #eee;margin-bottom: 20px;border-radius: 10px;}
 /* .content>div>img {border-radius: 5rem;} */
 .content>div>.rightBtn {display: flex;flex-direction: column;}
 .content>div>.rightBtn button {display: block;padding: 30px;color: #fff;background-color: #333;}
+
+
+
+
+
+
+
+
+
 
 </style>
