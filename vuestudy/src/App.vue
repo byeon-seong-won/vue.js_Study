@@ -8,7 +8,7 @@
     <!-- main -->
     <router-view :lists="lists"></router-view>    
     <!-- list -->
-    <router-view :lists="lists"></router-view> 
+    <!-- <router-view :lists="lists"></router-view>  -->
 
     <!-- <Detail :detail="lists"></Detail> -->
 
