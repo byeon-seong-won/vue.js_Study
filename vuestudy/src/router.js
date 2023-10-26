@@ -4,6 +4,7 @@ import Detail from './components/Detailcomp.vue'
 import Main from './components/Maincomp.vue'
 
 
+
 const routes = [
   {
     path: "/",
