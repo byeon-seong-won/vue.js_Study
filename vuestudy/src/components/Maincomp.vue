@@ -1,7 +1,6 @@
 <template>
   <div class="content">
     <h1>My Daily Life</h1>  
-
   </div>
 </template>
 <script>
