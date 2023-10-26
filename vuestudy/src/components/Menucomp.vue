@@ -23,6 +23,7 @@ export default {
 .menu>h1>a {color : #444;padding : 10px;font-weight: 500;font-size: 20px;display: inline-block;text-align: left;}
 .menu>div {display: flex;flex: 3;justify-content: end;}
 .menu>div>a {color: #333;font-size: 18px;}
+.menu>div>a:hover {color: #888;}
 .menu>div>a:last-child {display: inline-block;margin-left: 50px;}
 
 </style>
