@@ -7,12 +7,12 @@
       <div v-if="step == 0">
           <div class="upload-image" :style="`background-Image : url({this.$route.params.img})`" :class="filter">이미지 : `{{$route.params.name}}`</div>
           <div class="filters">
-              <filterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i">
+              <FilterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i">
                 <template v-slot:default="이름받음">
                   <span>{{이름받음.msg}}</span>
                 </template>
                 <!-- <template v-slot:b><span>데이터2</span></template> -->
-              </filterBox>
+              </FilterBox>
           </div>
           <button @click="step = 1">Next</button>
       </div>
@@ -34,6 +34,7 @@
 
 
 <script>
+import FilterBox from './filterboxcomp.vue'
 export default {
   name : 'Postcomp',
   data() {
@@ -43,6 +44,9 @@ export default {
   },
   props : {
     img : String
+  },
+  components : {
+    FilterBox
   }
   
 }
@@ -56,16 +60,10 @@ export default {
     min-height: 1200px;
     height: calc(100% - 80px);
     margin: 0 auto;
-    border-radius: 2rem;
-    overflow: hidden;
     padding: 70px;
-    background-image: linear-gradient(rgba(0, 0, 0,0.4), rgba(0, 0, 0,0.5)),url("../assets/main.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
     position: relative;
   }
-  .postcont>h1 {font-size: 8rem;text-align: left;font-family: 'Acme', sans-serif;color: #fff;text-transform: uppercase;margin-bottom: 50px;}
+  .postcont>h1 {font-size: 8rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
 
 
   .upload-image{
@@ -79,6 +77,7 @@ export default {
 .filters{
 overflow-x:scroll;
 white-space: nowrap;
+border: 1px solid #000;
 }
 .filter-1 {
 width: 100px;
