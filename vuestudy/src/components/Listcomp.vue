@@ -1,68 +1,44 @@
-<template>
-  <div class="listcont">
-    <h1>My Blog List</h1>  
-    <div>
-      <div>
-        <h5>{{lists[0].title}}</h5>
-        <p>{{lists[0].date}}</p>
-        <router-link to="/detail/0">이동</router-link>
-      </div>
-      <div>
-        <h5>{{lists[1].title}}</h5>
-        <p>{{lists[1].date}}</p>
-        <router-link to="/detail/1">이동</router-link>
-      </div>
-      <div>
-        <h5>{{lists[2].title}}</h5>
-        <p>{{lists[2].date}}</p>
-        <router-link to="/detail/2">이동</router-link>
-      </div>
-    </div>
-  </div>
-</template>
-<script>
 
+<template>
+    <div class="post">
+        <div class="post-body" :style="{ backgroundImage : `url(${post.postImage})` }" :class="`${post.filter}`"></div>
+        <div class="post-content">
+          <p>{{post.content}}</p>
+          <p class="date">{{post.date}}</p>
+        </div>
+    </div> 
+  </template>
+  
+  <script>
 
 export default {
-  name : 'list',
   props : {
-    lists : Array
+    post : Object
   }
+  
 }
-</script>
+  </script>
+  
 <style>
-  .listcont {
-  width: calc(100% - 80px);
-  min-height: 1200px;
-  height: calc(100% - 80px);
-  margin: 0 auto;
-  border-radius: 2rem;
-  overflow: hidden;
-  padding: 70px;
-  background-image: linear-gradient(rgba(0, 0, 0,0.4), rgba(0, 0, 0,0.5)),url("../assets/main.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  }
-  .listcont>h1 {font-size: 8rem;text-align: left;font-family: 'Acme', sans-serif;color: #fff;text-transform: uppercase;margin-bottom: 50px;}
-  .listcont>div {display: grid;grid-template-columns: repeat(3, 1fr);gap: 30px;}
-  .listcont>div>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 10px;font-size: 20px;}
-
-
-
-
-  @media (max-width: 1440px) {
-    .listcont>div {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}
-    .listcont>div>div {padding: 30px;}
-  }
-  @media (max-width: 1024px) {
-    .listcont>div {display: grid;grid-template-columns: repeat(1, 1fr);gap: 30px;}
-    .listcont>div>div {padding: 20px;}
-  }
-
-
-
-
-
-</style>
+.post {width: 100%;}
+.profile {
+  /* background-image: url("https://picsum.photos/100?random=0"); */
+  width: 30px;
+  height: 30px;
+  background-size: 100%;
+  border-radius: 50%;
+  float: left;
+}
+.profile-name {
+  display: block;
+  float: left;
+  padding-left: 10px;
+  padding-top: 7px;
+  font-size: 14px;
+}
+.post-header {height: 30px;padding: 10px;}
+.post-body {/* background-image: url("https://picsum.photos/600?random=0"); */height: 450px;background-position: center;background-size: cover;}
+.post-content {padding-left: 15px;padding-right: 15px;font-size: 14px;}
+.date {font-size: 11px;color: grey;margin-top: -8px;} 
+  </style>
+  
