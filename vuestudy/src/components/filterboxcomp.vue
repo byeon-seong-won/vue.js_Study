@@ -36,5 +36,6 @@ export default {
   color : white;
   background-size: cover;
   background-position : center;
+
 }
 </style>
