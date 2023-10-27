@@ -6,7 +6,7 @@
     <Menu/>
 
     <!-- main -->
-    <router-view :lists="lists"></router-view>    
+    <router-view :posts="posts"></router-view>    
     <!-- <Detail :detail="lists"></Detail> -->
 
   
@@ -21,26 +21,13 @@ export default {
   name : 'App',
   data(){
     return {
-      신고수 : [0,1,2,3,4,5],
-      idx : 0,
-      modal : false,
-      lists : data,
-      오브젝트 : { name : "byeon", age : 29 }
+      posts : data
     }
   },
   components : {
     Menu
   },
-  methods : {
-    priceSort() {
-      this.원룸들.sort(function(a,b) {
-        return a.price - b.price
-      })
-    },
-    sortBack() {
-      this.원룸들 = [...this.원룸들복제본]
-    }
-  }
+  
 }
 </script>
 
