@@ -1,24 +1,30 @@
 
-<template>
-    <div class="post">
-        <div class="post-body" :style="{ backgroundImage : `url(${post.postImage})` }" :class="`${post.filter}`"></div>
-        <div class="post-content">
-          <p>{{post.content}}</p>
-          <p class="date">{{post.date}}</p>
-        </div>
-    </div> 
-  </template>
-  
-  <script>
 
+<template>
+  <div class="post">
+    <div class="post-body" :style="{ backgroundImage : `url(${post. postImage})` }" :class="`${post.filter}`"></div>
+    <div class="post-content">
+      <p>{{post.content}}</p>
+      <p class="date">{{post.date}}</p>
+    </div>
+  </div> 
+</template>
+
+
+
+
+<script>
 export default {
+  name : '',
   props : {
     post : Object
-  }
+  },
   
 }
-  </script>
-  
+
+</script>
+
+
 <style>
 .post {width: 100%;}
 .profile {
@@ -41,4 +47,3 @@ export default {
 .post-content {padding-left: 15px;padding-right: 15px;font-size: 14px;}
 .date {font-size: 11px;color: grey;margin-top: -8px;} 
   </style>
-  
