@@ -1,18 +1,20 @@
 export default [
-  { 
-    title : '첫 째 프로젝트 : 허위매물 전문 부동산 앱',
-    content : 'Vue를 이용하면 비누같이 매끈한 앱을 만들 수 있습니다',
-    date : 'September 24, 2021',
-    number : 0
-  },{ 
-    title : '둘 째 프로젝트 : 오마카세 배달 앱',
-    content : '음식이 아니라 셰프를 직접 배달해드립니다',
-    date : 'October 20, 2020',
-    number : 1
-  },{ 
-    title : '셋 째 프로젝트 : 현피 앱',
-    content : '거리를 설정하면 가장 가까운 파이터를 소개해드려요! 서로 싸워보세요',
-    date : 'April 24, 2019',
-    number : 2
+  {
+    postImage:"https://picsum.photos/600?random=3",
+    date: "May 15",
+    content: "오늘 무엇을 했냐면요 아무것도 안했어요 ?",
+    filter: "perpetua"
+  },
+  {
+    postImage: "https://picsum.photos/600?random=4",
+    date: "May 15",
+    content: "흔한 자랑스타그램",
+    filter: "clarendon"
+  },
+  {
+    postImage: "https://picsum.photos/600?random=5",
+    date: "Apr 4",
+    content: "우리집 개는 화장실 물도 내림",
+    filter: "lofi"
   }
 ]
