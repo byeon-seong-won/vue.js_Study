@@ -4,6 +4,10 @@
     <div>
       <List v-for="(a,i) in posts" :key="i" :post="posts[i]"/>
     </div>
+    <ul class="footer-button-plus">
+      <input @change="upload" type="file" id="file"/>
+      <label for="file" class="input-plus">+</label>
+    </ul>
   </div>
 </template>
 <script>
@@ -11,12 +15,30 @@
 import List from './Listcomp.vue'
 export default {
   name : 'list',
+  data() {
+    return {
+      img : ''
+    } 
+  },
   props : {
     posts : Array
   },
   components : {
     List
-  }
+  },
+  methods : {
+    upload(e){
+      let 파일 = e.target.files;
+      let url = URL.createObjectURL(파일[0]);
+      this.img = url;
+      this.$router.push({name: 'Post', params: {name : "name"}})
+      
+
+      // this.step++
+    },
+    
+  },
+
 }
 </script>
 <style>
