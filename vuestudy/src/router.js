@@ -19,7 +19,8 @@ const routes = [
   },
   {
     path: "/write",
-    component: Post
+    component: Post,
+    name : 'Post'
   },
   {
     path: "/detail/:id",
