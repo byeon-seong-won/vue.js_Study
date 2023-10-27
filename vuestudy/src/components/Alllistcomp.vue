@@ -1,13 +1,13 @@
 <template>
   <div class="listcont">
     <h1>My Blog List</h1>  
-    <div>
-      <List v-for="(a,i) in posts" :key="i" :post="posts[i]"/>
-    </div>
     <ul class="footer-button-plus">
       <input @change="upload" type="file" id="file"/>
       <label for="file" class="input-plus">+</label>
     </ul>
+    <div>
+      <List v-for="(a,i) in posts" :key="i" :post="posts[i]"/>
+    </div>
   </div>
 </template>
 <script>
@@ -32,7 +32,7 @@ export default {
       let url = URL.createObjectURL(파일[0]);
       this.img = url;
       this.$router.push({name: 'Post', params: {name : "name"}})
-      
+ 
 
       // this.step++
     },
@@ -43,21 +43,15 @@ export default {
 </script>
 <style>
   .listcont {
-  width: calc(100% - 80px);
-  min-height: 1200px;
-  height: calc(100% - 80px);
-  margin: 0 auto;
-  border-radius: 2rem;
-  overflow: hidden;
-  padding: 70px;
-  background-image: linear-gradient(rgba(0, 0, 0,0.4), rgba(0, 0, 0,0.5)),url("../assets/main.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+    width: calc(100% - 80px);
+    min-height: 1200px;
+    height: calc(100% - 80px);
+    margin: 0 auto;
+    padding: 70px;
+    position: relative;
   }
-  .listcont>h1 {font-size: 8rem;text-align: left;font-family: 'Acme', sans-serif;color: #fff;text-transform: uppercase;margin-bottom: 50px;}
-  .listcont>div {display: grid;grid-template-columns: repeat(3, 1fr);gap: 30px;}
+  .listcont>h1 {font-size: 8rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
+  .listcont>div {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}
   .listcont>div>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 10px;font-size: 20px;}
 
 
