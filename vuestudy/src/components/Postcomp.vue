@@ -5,7 +5,7 @@
       <h1>RECORD MY LIFE</h1>  
         <!-- tab02 -->
       <div v-if="step == 0">
-          <div class="upload-image" :style="`background-Image : url({this.$route.params.img})`" :class="filter">이미지 : `{{$route.params.name}}`</div>
+          <div class="upload-image" :style="`background-Image : url(https://picsum.photos/100?random=3)`" :class="filter">이미지 : `{{$route.params.name}}`</div>
           <div class="filters">
               <FilterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i">
                 <template v-slot:default="이름받음">
@@ -19,7 +19,7 @@
 
       <!-- tab03 -->
       <div v-if="step == 1">
-          <!-- <div class="upload-image" :style="`background-Image : url({$route.params.img})`" :class="filter"></div> -->
+          <div class="upload-image" :style="`background-Image : url(https://picsum.photos/100?random=3)`" :class="filter"></div>
           <div class="write">
             <textarea class="write-box" @input="$emit('write', $event.target.value)">
               
@@ -40,6 +40,11 @@ export default {
   data() {
     return {
       step : 0,
+      filters : [
+        "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
+        "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
+        "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"
+      ],
     }
   },
   props : {
@@ -67,12 +72,13 @@ export default {
 
 
   .upload-image{
-    width: 80%;
+    width: 100%;
     height: 450px;
     margin: 0 auto;
-    background: cornflowerblue;
+    /* background: cornflowerblue; */
     border: 5px solid #000;
-    background-size : cover;
+    background-size : contain;
+    background-repeat: no-repeat;
   }
 .filters{
 overflow-x:scroll;
