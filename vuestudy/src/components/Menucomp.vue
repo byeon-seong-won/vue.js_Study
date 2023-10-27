@@ -5,7 +5,7 @@
       </h1>
       <div>
         <router-link to="/list">블로그 글 보러가기</router-link>
-        <router-link to="/list">블로그 글 작성하기</router-link>
+        <router-link to="/write">블로그 글 작성하기</router-link>
       </div>
     </div>
 </template>
