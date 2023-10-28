@@ -49,12 +49,12 @@ export default {
     margin: 0 auto;
     padding: 70px;
     position: relative;
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(247, 247, 247);
     border-radius: 2rem;
   }
   .listcont>h1 {font-size: 8rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
   .listcont>div {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}
-  .listcont>div>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 10px;font-size: 20px;}
+  .listcont>div>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 2rem;font-size: 20px;}
 
 
 
