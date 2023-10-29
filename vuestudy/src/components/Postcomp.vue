@@ -2,12 +2,17 @@
 
 <template>
     <div class="postcont">
-      <h1>RECORD MY LIFE</h1>  
-        <!-- tab02 -->
+      <!-- <h1>RECORD MY LIFE</h1>   -->
+      <!-- tab01 -->
       <div v-if="step == 0">
-        <ul class="footer-button-plus">
+        <List v-for="(a,i) in posts" :key="i" :post="posts[i]"/>
+        <button @click="step = 1">Next</button>
+      </div>
+      <!-- tab02 -->
+      <div v-if="step == 1">
+        <ul>
           <input @change="upload" type="file" id="file"/>
-          <label for="file" class="input-plus">+</label>
+          <label for="file" class="input-plus"></label>
         </ul>
           <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter">
             <h4 v-if="uploaded == false">이미지를 업로드해주세요!</h4>
@@ -17,18 +22,18 @@
                 <!-- <template v-slot:b><span>데이터2</span></template> -->
               </FilterBox>
           </div>
-          <button @click="step = 1">Next</button>
+          <button @click="step = 2">Next</button>
       </div>
 
       <!-- tab03 -->
-      <div v-if="step == 1">
+      <div v-if="step == 2">
           <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter"></div>
           <div class="write">
             <textarea class="write-box" @input="write">
               
             </textarea>
           </div>
-          <button @click="publish">발행하기</button>
+          <button @click="publish()">발행하기</button>
       </div>
     </div>
 </template>
@@ -37,11 +42,14 @@
 
 
 <script>
+import data from '.././assets/data.js'
 import FilterBox from './filterboxcomp.vue'
+import List from './Listcomp.vue'
 export default {
   name : 'Postcomp',
   data() {
     return {
+      posts : data,
       step : 0,
       filters : [
         "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
@@ -55,7 +63,8 @@ export default {
     }
   },
   components : {
-    FilterBox
+    FilterBox,
+    List
   },
   methods : {
     upload(e){
@@ -68,17 +77,16 @@ export default {
       this.input = $event.target.value
     },
     publish() {
-      // var 새게시물 = {
-      //   postImage: this.img,
-      //   date: "Oct 30",
-      //   content: this.input,
-      //   filter: this.clickedFilter
-      // };
-      this.$emit('send', this.img, "Oct 30", this.input, this.clickedFilter)
-      this.$router.push('/list')
+      var 새게시물 = {
+        postImage: this.img,
+        date: "Oct 30",
+        content: this.input,
+        filter: this.clickedFilter
+      };
+      this.posts.unshift(새게시물);
+      this.step = 0;
+      // this.$router.push({name: 'List', params: {name : 새게시물}})
     },
-
-    
   },
   mounted() {
     this.emitter.on('click', (a)=> {
@@ -94,6 +102,7 @@ export default {
 <style>
  .postcont {
     width: calc(100% - 80px);
+    max-width: 1200px;
     min-height: 1200px;
     height: calc(100% - 80px);
     margin: 0 auto;
@@ -101,6 +110,10 @@ export default {
     position: relative;
   }
   .postcont>h1 {font-size: 8rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
+  .postcont>div {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}
+  .postcont>div>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 2rem;font-size: 20px;}
+
+
 
 
   .upload-image{
