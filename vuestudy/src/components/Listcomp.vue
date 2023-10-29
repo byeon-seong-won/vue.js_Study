@@ -4,7 +4,7 @@
   <div class="post">
     <p class="date">{{post.date}}</p>
     <div class="post-body" :style="{ backgroundImage : `url('${post. postImage}')`}" :class="`${post.filter}`"></div>
-    <p>{{post.content}}</p>
+    <div class="post-content"><p>{{post.content}}</p></div>
   </div> 
 </template>
 
