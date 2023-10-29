@@ -4,9 +4,9 @@
     <div class="postcont">
       <!-- <h1>RECORD MY LIFE</h1>   -->
       <!-- tab01 -->
+      <button @click="step = 1" v-if="step == 0" >+ 새글 작성하기</button>
       <div v-if="step == 0" class="list">
-        <List v-for="(a,i) in posts" :key="i" :post="posts[i]"/>
-        <button @click="step = 1">Next</button>
+        <List v-for="(a,i) in posts" :key="i" :post="posts[i]" @click="$router.push('/detail/' + i)"/>
       </div>
       <!-- tab02 -->
       <div v-if="step == 1">
@@ -49,7 +49,7 @@ import data from '.././assets/data.js'
 import FilterBox from './filterboxcomp.vue'
 import List from './Listcomp.vue'
 export default {
-  name : 'Postcomp',
+  name : 'Post',
   data() {
     return {
       posts : data,
@@ -113,7 +113,7 @@ export default {
     position: relative;
   }
   .postcont>h1 {font-size: 8rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
-  .postcont>div.list {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}
+  .postcont>div.list {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;cursor: pointer;}
   .postcont>div.list>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 2rem;font-size: 20px;}
 
 
