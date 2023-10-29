@@ -12,12 +12,12 @@
 
 
 <script>
+
 export default {
   name : '',
   props : {
     post : Object
-  },
-  
+  }
 }
 
 </script>
