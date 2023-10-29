@@ -2,7 +2,7 @@
 
 <template>
   <div class="post">
-    <div class="post-body" :style="{ backgroundImage : `url(${post. postImage})` }" :class="`${post.filter}`"></div>
+    <div class="post-body" :style="{ backgroundImage : `url('${post. postImage}')`}" :class="`${post.filter}`"></div>
     <div class="post-content">
       <p>{{post.content}}</p>
       <p class="date">{{post.date}}</p>
