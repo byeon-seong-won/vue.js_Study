@@ -7,38 +7,33 @@
       <label for="file" class="input-plus">+</label>
     </ul> -->
     <div>
-      <List v-for="(a,i) in posts" :key="i" :post="posts[i]"/>
+      <List v-for="(a,i) in posts" :key="i" :post="posts[i]" @send="posts = $event"/>
+
     </div>
   </div>
 </template>
 <script>
-
+import data from '.././assets/data.js'
 import List from './Listcomp.vue'
 export default {
   name : 'list',
   data() {
     return {
-      img : ''
+      img : '',
+      posts : data
     } 
-  },
-  props : {
-    posts : Array
   },
   components : {
     List
   },
-  methods : {
-    upload(e){
-      let 파일 = e.target.files;
-      let url = URL.createObjectURL(파일[0]);
-      this.img = url;
-      this.$router.push({name: 'Post', params: {name : "name"}})
- 
-
-      // this.step++
-    },
-    
-  },
+  mounted() {
+    console.log("지금 data는" + JSON.stringify(this.posts))
+    this.$router.push({name: 'Post', params: {name : "name"}})
+  //   this.emitter.on('publish', (a)=> {
+  //       console.log(a)
+  //       this.posts.unshift(a);
+  //   })
+  }
 
 }
 </script>
