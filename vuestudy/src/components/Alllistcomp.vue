@@ -1,10 +1,11 @@
 <template>
   <div class="listcont">
     <h1>My Blog List</h1>  
-    <ul class="footer-button-plus">
+    <router-link to="/write">++++++</router-link>
+    <!-- <ul class="footer-button-plus">
       <input @change="upload" type="file" id="file"/>
       <label for="file" class="input-plus">+</label>
-    </ul>
+    </ul> -->
     <div>
       <List v-for="(a,i) in posts" :key="i" :post="posts[i]"/>
     </div>
