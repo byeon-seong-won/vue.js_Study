@@ -5,12 +5,15 @@
       <h1>RECORD MY LIFE</h1>  
         <!-- tab02 -->
       <div v-if="step == 0">
-          <div class="upload-image" :style="`background-Image : url(https://picsum.photos/100?random=3)`" :class="filter">이미지 : `{{$route.params.name}}`</div>
+        <ul class="footer-button-plus">
+          <input @change="upload" type="file" id="file"/>
+          <label for="file" class="input-plus">+</label>
+        </ul>
+          <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter">
+            <h4 v-if="uploaded == false">이미지를 업로드해주세요!</h4>
+          </div>
           <div class="filters">
               <FilterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i">
-                <template v-slot:default="이름받음">
-                  <span>{{이름받음.msg}}</span>
-                </template>
                 <!-- <template v-slot:b><span>데이터2</span></template> -->
               </FilterBox>
           </div>
@@ -19,13 +22,13 @@
 
       <!-- tab03 -->
       <div v-if="step == 1">
-          <div class="upload-image" :style="`background-Image : url(https://picsum.photos/100?random=3)`" :class="filter"></div>
+          <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter"></div>
           <div class="write">
-            <textarea class="write-box" @input="$emit('write', $event.target.value)">
+            <textarea class="write-box" @input="write">
               
             </textarea>
           </div>
-          <button>발행하기</button>
+          <button @click="publish">발행하기</button>
       </div>
     </div>
 </template>
@@ -45,13 +48,42 @@ export default {
         "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
         "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"
       ],
+      img : '',
+      clickedFilter : '',
+      input : '',
+      uploaded : false
     }
-  },
-  props : {
-    img : String
   },
   components : {
     FilterBox
+  },
+  methods : {
+    upload(e){
+      let 파일 = e.target.files;
+      let url = URL.createObjectURL(파일[0]);
+      this.img = url;
+      this.uploaded = true;
+    },
+    write($event) {
+      this.input = $event.target.value
+    },
+    publish() {
+      // var 새게시물 = {
+      //   postImage: this.img,
+      //   date: "Oct 30",
+      //   content: this.input,
+      //   filter: this.clickedFilter
+      // };
+      this.$emit('send', this.img, "Oct 30", this.input, this.clickedFilter)
+      this.$router.push('/list')
+    },
+
+    
+  },
+  mounted() {
+    this.emitter.on('click', (a)=> {
+      this.clickedFilter = a
+    })
   }
   
 }
@@ -80,6 +112,7 @@ export default {
     background-size : contain;
     background-repeat: no-repeat;
   }
+  .upload-image h4 {color: #333;border: 1px solid #000;}
 .filters{
 overflow-x:scroll;
 white-space: nowrap;
