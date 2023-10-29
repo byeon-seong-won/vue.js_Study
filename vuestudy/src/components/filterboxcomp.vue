@@ -1,8 +1,10 @@
 
 
 <template>
-    <div @click="fire" :class="filter + ' filter-item'" :style="`background-Image : url(${img})`">
+    <div @click="sendfilter" :class="filter + ' filter-item'" :style="`background-Image : url(${img})`">
+        <span class="filtername">{{filter}}</span>
     </div> 
+   
 </template>
 
 
@@ -16,7 +18,7 @@ export default {
         filter : String
     },
     methods : {
-        fire() {
+        sendfilter() {
             this.emitter.emit('click', this.filter)
         }
     }
@@ -37,6 +39,6 @@ export default {
   background-size: cover;
   background-position : center;
   border: 1px solid #000;
-
 }
+.filtername {color: #333;font-weight: bold;} 
 </style>
