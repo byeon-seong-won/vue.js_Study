@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Main from './components/Maincomp.vue'
 import Post from './components/Postcomp.vue'
+import Detail from './components/Detailcomp.vue'
 
 
 const routes = [
@@ -9,9 +10,13 @@ const routes = [
     component: Main,
   },
   {
-    path: "/list",
+    path: "/post",
     component: Post,
-    name : 'Post'
+    name : 'Post',
+  },
+  {
+    path: "/detail/:id",
+    component: Detail,
   }
 ];
 
