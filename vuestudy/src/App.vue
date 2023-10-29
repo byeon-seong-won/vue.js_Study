@@ -6,7 +6,7 @@
     <Menu/>
 
     <!-- main -->
-    <router-view :posts="posts"></router-view>    
+    <router-view></router-view>    
     <!-- <Detail :detail="lists"></Detail> -->
 
   
@@ -14,16 +14,16 @@
 </template>
 
 <script>
-import data from './assets/data.js'
+// import data from './assets/data.js'
 import Menu from './components/Menucomp.vue'
 
 export default {
   name : 'App',
-  data(){
-    return {
-      posts : data
-    }
-  },
+  // data(){
+  //   return {
+  //     posts : data
+  //   }
+  // },
   components : {
     Menu
   },
