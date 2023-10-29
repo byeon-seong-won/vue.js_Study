@@ -4,7 +4,7 @@
     <div class="postcont">
       <!-- <h1>RECORD MY LIFE</h1>   -->
       <!-- tab01 -->
-      <div v-if="step == 0">
+      <div v-if="step == 0" class="list">
         <List v-for="(a,i) in posts" :key="i" :post="posts[i]"/>
         <button @click="step = 1">Next</button>
       </div>
@@ -15,7 +15,10 @@
           <label for="file" class="input-plus"></label>
         </ul>
           <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter">
-            <h4 v-if="uploaded == false">이미지를 업로드해주세요!</h4>
+            <div v-if="uploaded == false" class="uploadPz">
+              <img src=".././assets/notfound.png">
+              <h4>이미지를 업로드해주세요!</h4>
+            </div>
           </div>
           <div class="filters">
               <FilterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i">
@@ -110,22 +113,26 @@ export default {
     position: relative;
   }
   .postcont>h1 {font-size: 8rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
-  .postcont>div {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}
-  .postcont>div>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 2rem;font-size: 20px;}
+  .postcont>div.list {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}
+  .postcont>div.list>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 2rem;font-size: 20px;}
 
 
 
 
   .upload-image{
     width: 100%;
-    height: 450px;
+    height: 500px;
     margin: 0 auto;
-    /* background: cornflowerblue; */
-    border: 5px solid #000;
+    text-align: center;
     background-size : contain;
     background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #888;
+    position: relative;
   }
-  .upload-image h4 {color: #333;border: 1px solid #000;}
+  .upload-image>div.uploadPz {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+  .upload-image>div.uploadPz>h4 {font-size: 20px;color: #333;}
+  .upload-image>div.uploadPz>img {width: 100%;}
 .filters{
 overflow-x:scroll;
 white-space: nowrap;
