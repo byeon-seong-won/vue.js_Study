@@ -55,8 +55,9 @@ img {vertical-align:top;font-size:0;border:0;}
 
 .wrap {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: #fff;
+
   /* background-image: url("./assets/main.png");
   background-position: center center;
   background-repeat: no-repeat;
