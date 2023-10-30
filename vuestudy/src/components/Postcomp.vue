@@ -2,7 +2,7 @@
 
 <template>
     <div class="postcont">
-      <!-- <h1>RECORD MY LIFE</h1>   -->
+      <h1>MY BLOG LIST</h1>  
       <!-- tab01 -->
       <button @click="step = 1" v-if="step == 0" >+ 새글 작성하기</button>
       <div v-if="step == 0" class="list">
@@ -10,6 +10,7 @@
       </div>
       <!-- tab02 -->
       <div v-if="step == 1">
+        <p>블로그에 업로드 할 이미지를 넣어주세요!</p>
         <ul>
           <input @change="upload" type="file" id="file"/>
           <label for="file" class="input-plus"></label>
@@ -21,11 +22,12 @@
             </div>
           </div>
           <div class="filters">
+              <p>필터 선택하기</p>
               <FilterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i">
                 <!-- <template v-slot:b><span>데이터2</span></template> -->
               </FilterBox>
           </div>
-          <button @click="step = 2">Next</button>
+          <button @click="step = 2">글 작성하기</button>
       </div>
 
       <!-- tab03 -->
@@ -36,7 +38,7 @@
               
             </textarea>
           </div>
-          <button @click="publish()">발행하기</button>
+          <button @click="publish()">등록하기</button>
       </div>
     </div>
 </template>
@@ -112,9 +114,12 @@ export default {
     padding: 70px;
     position: relative;
   }
-  .postcont>h1 {font-size: 8rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
-  .postcont>div.list {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;cursor: pointer;}
-  .postcont>div.list>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 2rem;font-size: 20px;}
+  .postcont button {margin-bottom: 30px;}
+  .postcont>Div:nth-child(2) button {margin-top: 30px;}
+  .postcont button:hover {opacity: 0.85;}
+  .postcont>h1 {font-size: 4rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
+  .postcont>div.list {display: grid;grid-template-columns: repeat(2, 1fr);gap: 50px;cursor: pointer;}
+  .postcont>div.list>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 2rem;font-size: 20px;min-height: 500px}
 
 
 
@@ -122,13 +127,14 @@ export default {
   .upload-image{
     width: 100%;
     height: 500px;
-    margin: 0 auto;
+    margin: 30px auto 10px;
     text-align: center;
     background-size : contain;
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid #888;
+    background-color: transparent;
     position: relative;
+    border: 0.12rem solid #eee;
   }
   .upload-image>div.uploadPz {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
   .upload-image>div.uploadPz>h4 {font-size: 20px;color: #333;}
@@ -136,7 +142,7 @@ export default {
 .filters{
 overflow-x:scroll;
 white-space: nowrap;
-border: 1px solid #000;
+
 }
 .filter-1 {
 width: 100px;
@@ -164,12 +170,14 @@ background: #555;
 }
 .write-box {
 border: none;
-width: 90%;
+width: 100%;
 height: 100px;
 padding: 15px;
 margin: auto;
 display: block;
 outline: none;
+border: 0.15rem solid #ccc;
+    box-sizing: border-box;
 }
 
 
