@@ -24,9 +24,8 @@ export default {
 
 
 <style>
-.post {width: 100%;display: flex;justify-content: space-between;align-items: center;flex-direction: column;}
-st-header {height: 30px;padding: 10px;}
-.post-body {/* background-image: url("https://picsum.photos/600?random=0"); */height: 450px;background-position: center;background-size: contain;background-repeat: no-repeat;width: 100%;}
-.post-content {padding-left: 15px;padding-right: 15px;font-size: 14px;flex: 1;border: 1px solid #000;}
-.date {font-size: 11px;color: grey;margin-top: -8px;} 
+.post {width: 100%;text-align: left;height: 100%;}
+.post-body {/* background-image: url("https://picsum.photos/600?random=0"); */min-height: 300px;max-height: 400px;background-position: center;background-size: contain;background-repeat: no-repeat;width: 100%;margin: 20px 0;background-color: #111;}
+.post-content {padding: 20px;font-size: 14px;background-color: #fff;border-radius: 20px;}
+.date {font-size: 16px;color: #333;margin-top: -8px;font-weight: bold;} 
   </style>
