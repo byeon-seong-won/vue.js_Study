@@ -14,15 +14,16 @@ export default {
 <style>
 .content {
   width: calc(100% - 80px);
-  min-height: 1200px;
-  height: calc(100% - 80px);
+  /* min-height: 1200px;*/
+  height: calc(100% - 80px); 
+  /* height: 100%; */
   margin: 0 auto;
   border-radius: 2rem;
   overflow: hidden;
   padding: 70px;
   /* background-image: linear-gradient(rgba(221, 221, 221,0.5), rgba(221, 221, 221,0.2)),url("./assets/main.png"); */
   background-image: linear-gradient(rgba(221, 221, 221,0.1), rgba(0, 0, 0,0.2)),url("../assets/main.png");
-  background-position: center center;
+  background-position: bottom center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
