@@ -41,5 +41,5 @@ export default {
   border: 1px solid #ccc;
   cursor: pointer;
 }
-.filtername {color: #333;font-weight: bold;} 
+.filtername {color: #333;font-weight: bold;font-size: 14px;} 
 </style>
