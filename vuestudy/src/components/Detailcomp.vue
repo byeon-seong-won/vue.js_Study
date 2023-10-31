@@ -1,7 +1,7 @@
 <template>
     <div class="detail">
         <p class="date">{{posts[$route.params.id].date}} 의 일상</p>
-        <button @click="modifystate=true">수정하기</button>
+        <button @click="modifystate=true; $emit('modiIdx', this.$route.params.id)">수정하기</button>
         <div v-if="modifystate == false">
             <div class="post-body" :style="{ backgroundImage : `url('${posts[$route.params.id]. postImage}')`}" :class="`${posts[$route.params.id].filter}`"></div>
             <div class="post-content">
@@ -15,7 +15,7 @@
               <input @change="modiUd" type="file" id="file"/>
               <label for="file" class="input-plus"></label>
             </ul>
-              <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter">
+              <div class="upload-image" :style="{backgroundImage : `url('${modiImg}')` }" :class="clickedFilter">
                 <!-- <div v-if="uploaded == false" class="uploadPz">
                   <img src=".././assets/notfound.png">
                   <h4>이미지를 업로드해주세요!</h4>
@@ -45,11 +45,12 @@ import FilterBox from './filterboxcomp.vue'
             modifystate : false,
             modiImg : '',
             modiCont : '',
-            modiFilter : ''
+            modiFilter : '',
+            idx : this.$route.params.id
           }
         },
         props : {
-            posts : Array
+            posts : Array,
         },
         components : {
             FilterBox
@@ -61,24 +62,27 @@ import FilterBox from './filterboxcomp.vue'
         },
         methods : {
             modiUd(e){
-              let 파일 = e.target.files;
-              let url = URL.createObjectURL(파일[0]);
-              this.modiImg = url;
+              let 수정파일 = e.target.files;
+              let modiurl = URL.createObjectURL(수정파일[0]);
+              this.modiImg = modiurl;
             },
             modiWrite($event) {
               this.modiCont = $event.target.value
             },
             modify() {
-                // var 수정게시물 = {
-                //     postImage: this.modiImg,
-                //     date: dayjs().format("YYYY-MM-DD"),
-                //     content: this.modiCont,
-                //     filter: this.modiFilter
-                // };
+                var 수정게시물 = {
+                    postImage: this.modiImg,
+                    date: dayjs().format("YYYY-MM-DD"),
+                    content: this.modiCont,
+                    filter: this.modiFilter
+                };
                 // console.log("수정게시물" + JSON.stringify(수정게시물))
-                this.emitter.emit("modify", this.modiImg, dayjs().format("YYYY-MM-DD"), this.modiCont, this.modiFilter, this.$route.params.id)
+                this.emitter.emit("modifyIdx", 수정게시물)
+                // console.log("detail 수정게시물" + JSON.stringify(수정게시물) + this.idx)
                 // console.log(this.$route.params.id)
                 this.modifystate = false;
+                alert("수정이 완료되었습니다.")
+                this.$router.push('../post')
             }
         }
     }
