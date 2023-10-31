@@ -1,6 +1,7 @@
 <template>
     <div class="detail">
         <p class="date">{{posts[$route.params.id].date}} 의 일상</p>
+        <button>수정하기</button>
         <div class="post-body" :style="{ backgroundImage : `url('${posts[$route.params.id]. postImage}')`}" :class="`${posts[$route.params.id].filter}`"></div>
         <div class="post-content">
             <p>{{posts[$route.params.id].content}}</p>
@@ -13,7 +14,7 @@
         name : 'Detail',
         props : {
             posts : Array
-        },
+        }
     }
 </script>
 
