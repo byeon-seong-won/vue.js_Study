@@ -76,7 +76,7 @@ div {box-sizing: border-box;}
 .white-bg {width: 100%; background: white;border-radius: 8px;padding: 20px;} 
 .room-img {width: 100%;}
 .product {background-color: #eee;margin-bottom: 40px;padding-bottom: 20px;}
-button {background: crimson;color: #fff;border: none;padding: 10px;border-radius: 10px;cursor: pointer;margin-right: 10px;}
+button {background: crimson;color: #fff;border: none;padding: 10px;border-radius: 10px;cursor: pointer;}
 .start {opacity: 0;transition: all 1s;}
 .end {opacity: 1;}
 
