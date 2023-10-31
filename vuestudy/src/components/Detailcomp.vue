@@ -1,25 +1,25 @@
 <template>
     <div class="detail">
         <p class="date">{{posts[$route.params.id].date}} 의 일상</p>
-        <button @click="modify=true">수정하기</button>
-        <div v-if="modify == false">
+        <button @click="modifystate=true">수정하기</button>
+        <div v-if="modifystate == false">
             <div class="post-body" :style="{ backgroundImage : `url('${posts[$route.params.id]. postImage}')`}" :class="`${posts[$route.params.id].filter}`"></div>
             <div class="post-content">
                 <p>{{posts[$route.params.id].content}}</p>
             </div>
         </div>
 
-        <div v-if="modify == true">
+        <div v-if="modifystate == true">
             <p>수정할 이미지를 업로드해주세요!</p>
             <ul>
-              <input @change="upload" type="file" id="file"/>
+              <input @change="modiUd" type="file" id="file"/>
               <label for="file" class="input-plus"></label>
             </ul>
               <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter">
-                <div v-if="uploaded == false" class="uploadPz">
+                <!-- <div v-if="uploaded == false" class="uploadPz">
                   <img src=".././assets/notfound.png">
                   <h4>이미지를 업로드해주세요!</h4>
-                </div>
+                </div> -->
               </div>
               <div class="filters">
                   <p>필터 선택하기</p>
@@ -27,24 +27,59 @@
                     <!-- <template v-slot:b><span>데이터2</span></template> -->
                   </FilterBox>
               </div>
-              <textarea class="write-box" @input="write">
+              <textarea class="write-box" @input="modiWrite">
 
               </textarea>
-            <button @click="publish()" class="newBtn">등록하기</button>
+            <button @click="modify" class="newBtn">수정완료</button>
         </div>
     </div> 
 </template>
 
 <script>
+import dayjs from 'dayjs'
+import FilterBox from './filterboxcomp.vue'
     export default {
         name : 'Detail',
         data(){
           return {
-            modify : false
+            modifystate : false,
+            modiImg : '',
+            modiCont : '',
+            modiFilter : ''
           }
         },
         props : {
             posts : Array
+        },
+        components : {
+            FilterBox
+        },
+        mounted() {
+            this.emitter.on('click', (a)=>{
+              this.modiFilter = a
+            })
+        },
+        methods : {
+            modiUd(e){
+              let 파일 = e.target.files;
+              let url = URL.createObjectURL(파일[0]);
+              this.modiImg = url;
+            },
+            modiWrite($event) {
+              this.modiCont = $event.target.value
+            },
+            modify() {
+                // var 수정게시물 = {
+                //     postImage: this.modiImg,
+                //     date: dayjs().format("YYYY-MM-DD"),
+                //     content: this.modiCont,
+                //     filter: this.modiFilter
+                // };
+                // console.log("수정게시물" + JSON.stringify(수정게시물))
+                this.emitter.emit("modify", this.modiImg, dayjs().format("YYYY-MM-DD"), this.modiCont, this.modiFilter, this.$route.params.id)
+                // console.log(this.$route.params.id)
+                this.modifystate = false;
+            }
         }
     }
 </script>
