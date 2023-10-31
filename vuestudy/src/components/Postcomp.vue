@@ -138,7 +138,7 @@ export default {
     min-height: 1200px;
     margin: 0 auto;
     position: relative;
-    padding: 150px 0;
+    padding: 250px 0;
   }
   .postcont .newBtn {margin-bottom: 30px;margin-top: 30px;}
   .postcont .newBtn.goback {margin-right: 10px;}
