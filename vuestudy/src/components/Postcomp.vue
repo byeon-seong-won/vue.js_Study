@@ -1,7 +1,7 @@
 
 
 <template>
-    <div class="postcont" @menuClick="step = 0">
+    <div class="postcont" @goBack="step = 0">
       <h1>MY BLOG LIST</h1>  
       <!-- tab01 -->
       <button @click="step = 1" v-if="step == 0" class="newBtn">+ 새글 작성하기</button>
@@ -11,7 +11,7 @@
       </div>
       <!-- tab02 -->
       <div v-if="step == 1">
-        <p>블로그에 업로드 할 이미지를 넣어주세요!</p>
+        <h4 class="stepTitle">블로그에 업로드 할 이미지를 넣어주세요!</h4>
         <ul>
           <input @change="upload" type="file" id="file"/>
           <label for="file" class="input-plus"></label>
@@ -23,22 +23,25 @@
             </div>
           </div>
           <div class="filters">
-              <p>필터 선택하기</p>
+              <p>필터 선택하기 <span class="xi-arrow-down"></span></p>
               <FilterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i">
                 <!-- <template v-slot:b><span>데이터2</span></template> -->
               </FilterBox>
           </div>
-          <button @click="step = 2" class="newBtn">글 작성하기</button>
+          <button @click="step = 0" class="newBtn goback">취소하기</button>
+          <button @click="step = 2" class="newBtn">다음단계로</button>
       </div>
 
       <!-- tab03 -->
       <div v-if="step == 2">
+        <h4 class="stepTitle">블로그에 업로드 할 내용을 입력해주세요!</h4>
         <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter"></div>
         <div class="write">
           <textarea class="write-box" @input="write">
             
           </textarea>
         </div>
+        <button @click="step = 0" class="newBtn goback">취소하기</button>
         <button @click="publish()" class="newBtn">등록하기</button>
       </div>
     </div>
@@ -102,12 +105,9 @@ export default {
       };
       this.posts.unshift(새게시물);
       this.step = 0;
-      // this.$router.push({name: 'List', params: {name : 새게시물}})
     }
   },
   mounted() {
-    console.log("modiidx값은 ?? " + this.modiidx)
-    // console.log("현재 post 글" + JSON.stringify(this.posts))
     this.emitter.on('click', (a)=> {
       this.clickedFilter = a
     })
@@ -122,11 +122,7 @@ export default {
         content: modiPost.content,
         filter: modiPost.filter
       };
-      // console.log("수정게시물" + JSON.stringify(수정게시물) + "idx는 " + modiIdx)
-      // console.log("id" + this.id)
       this.posts[modiPost.id] = 수정게시물
-      // console.log("idx" + idx)
-      // console.log(JSON.stringify(this.posts))
     })
   }
   
@@ -140,25 +136,25 @@ export default {
     width: calc(100% - 80px);
     max-width: 1400px;
     min-height: 1200px;
-    height: calc(100% - 80px);
     margin: 0 auto;
-    padding: 70px;
     position: relative;
+    padding: 150px 0;
   }
   .postcont .newBtn {margin-bottom: 30px;margin-top: 30px;}
-  .postcont>Div:nth-child(2) button {margin-top: 30px;}
+  .postcont .newBtn.goback {margin-right: 10px;}
+  .postcont>div:nth-child(2) button {margin-top: 30px;}
   .postcont button:hover {opacity: 0.85;}
   .postcont>h1 {font-size: 6rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
   .postcont>div.list {display: grid;grid-template-columns: repeat(2, 1fr);gap: 50px;}
-  .postcont>div.list>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 2rem;font-size: 20px;min-height: 500px}
-
+  .postcont>div.list>div {padding: 30px 40px;background-color: #eee;color: #333;border-radius: 2rem;font-size: 20px;min-height: 500px}
+.stepTitle {font-size: 22px;margin-bottom: 20px;}
 
 
 
   .upload-image{
     width: 100%;
     height: 500px;
-    margin: 30px auto 10px;
+    margin: 30px auto 50px;
     text-align: center;
     background-size : contain;
     background-repeat: no-repeat;
@@ -187,13 +183,13 @@ color : white;
 background-size: cover;
 }
 .filters::-webkit-scrollbar {
-height: 5px;
+height: 8px;
 }
 .filters::-webkit-scrollbar-track {
 background: #f1f1f1; 
 }
 .filters::-webkit-scrollbar-thumb {
-background: #888; 
+background: #09030578;
 border-radius: 5px;
 }
 .filters::-webkit-scrollbar-thumb:hover {
@@ -202,14 +198,16 @@ background: #555;
 .write-box {
 border: none;
 width: 100%;
-height: 100px;
-padding: 15px;
+height: 300px;
+padding: 20px;
 margin: auto;
 display: block;
 outline: none;
-border: 0.15rem solid #ccc;
-    box-sizing: border-box;
+border: 1px solid #aaa;
+box-sizing: border-box;
 }
+
+.write-box:focus {outline: none;}
 
 
 
