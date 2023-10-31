@@ -26,7 +26,7 @@ export default {
   box-sizing: border-box;
   z-index: 1000;
   left: 0;
-  top: 0;
+  top: 50px;
 }
 .menu>div {
   border: 0.13rem solid #888;
