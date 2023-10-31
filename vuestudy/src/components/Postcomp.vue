@@ -102,6 +102,13 @@ export default {
     this.emitter.on('remove', (a)=> {
       return this.posts.splice(a,1)
     })
+    this.emitter.on('modify', (img,date,input,filter,idx)=> {
+      console.log("받음" + img,date,input,filter,idx)
+      this.posts[idx].postImage = img;
+      this.posts[idx].date = date;
+      this.posts[idx].content = input;
+      this.posts[idx].filter = filter;
+    })
   }
   
 }
