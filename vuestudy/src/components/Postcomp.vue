@@ -4,9 +4,9 @@
     <div class="postcont">
       <h1>MY BLOG LIST</h1>  
       <!-- tab01 -->
-      <button @click="step = 1" v-if="step == 0" >+ 새글 작성하기</button>
+      <button @click="step = 1" v-if="step == 0" class="newBtn">+ 새글 작성하기</button>
       <div v-if="step == 0" class="list">
-        <List v-for="(a,i) in posts" :key="i" :post="posts[i]" @click="$router.push('/detail/' + i)"/>
+        <List v-for="(a,i) in posts" :key="i" :post="posts[i]" :idx="i"/>
       </div>
       <!-- tab02 -->
       <div v-if="step == 1">
@@ -27,7 +27,7 @@
                 <!-- <template v-slot:b><span>데이터2</span></template> -->
               </FilterBox>
           </div>
-          <button @click="step = 2">글 작성하기</button>
+          <button @click="step = 2" class="newBtn">글 작성하기</button>
       </div>
 
       <!-- tab03 -->
@@ -38,7 +38,7 @@
               
             </textarea>
           </div>
-          <button @click="publish()">등록하기</button>
+          <button @click="publish()" class="newBtn">등록하기</button>
       </div>
     </div>
 </template>
@@ -64,7 +64,8 @@ export default {
       img : '',
       clickedFilter : '',
       input : '',
-      uploaded : false
+      uploaded : false,
+      idx : ''
     }
   },
   components : {
@@ -91,11 +92,14 @@ export default {
       this.posts.unshift(새게시물);
       this.step = 0;
       // this.$router.push({name: 'List', params: {name : 새게시물}})
-    },
+    }
   },
   mounted() {
     this.emitter.on('click', (a)=> {
       this.clickedFilter = a
+    })
+    this.emitter.on('remove', (a)=> {
+      return this.posts.splice(a,1)
     })
   }
   
@@ -107,14 +111,14 @@ export default {
 <style>
  .postcont {
     width: calc(100% - 80px);
-    max-width: 1200px;
+    max-width: 1400px;
     min-height: 1200px;
     height: calc(100% - 80px);
     margin: 0 auto;
     padding: 70px;
     position: relative;
   }
-  .postcont button {margin-bottom: 30px;}
+  .postcont .newBtn {margin-bottom: 30px;}
   .postcont>Div:nth-child(2) button {margin-top: 30px;}
   .postcont button:hover {opacity: 0.85;}
   .postcont>h1 {font-size: 4rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
