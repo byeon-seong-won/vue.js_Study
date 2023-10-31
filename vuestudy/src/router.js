@@ -13,6 +13,7 @@ const routes = [
     path: "/post",
     component: Post,
     name : 'Post',
+    props : true
   },
   {
     path: "/detail/:id",
