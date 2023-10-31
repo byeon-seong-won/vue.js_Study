@@ -1,10 +1,36 @@
 <template>
     <div class="detail">
         <p class="date">{{posts[$route.params.id].date}} 의 일상</p>
-        <button>수정하기</button>
-        <div class="post-body" :style="{ backgroundImage : `url('${posts[$route.params.id]. postImage}')`}" :class="`${posts[$route.params.id].filter}`"></div>
-        <div class="post-content">
-            <p>{{posts[$route.params.id].content}}</p>
+        <button @click="modify=true">수정하기</button>
+        <div v-if="modify == false">
+            <div class="post-body" :style="{ backgroundImage : `url('${posts[$route.params.id]. postImage}')`}" :class="`${posts[$route.params.id].filter}`"></div>
+            <div class="post-content">
+                <p>{{posts[$route.params.id].content}}</p>
+            </div>
+        </div>
+
+        <div v-if="modify == true">
+            <p>수정할 이미지를 업로드해주세요!</p>
+            <ul>
+              <input @change="upload" type="file" id="file"/>
+              <label for="file" class="input-plus"></label>
+            </ul>
+              <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter">
+                <div v-if="uploaded == false" class="uploadPz">
+                  <img src=".././assets/notfound.png">
+                  <h4>이미지를 업로드해주세요!</h4>
+                </div>
+              </div>
+              <div class="filters">
+                  <p>필터 선택하기</p>
+                  <FilterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i">
+                    <!-- <template v-slot:b><span>데이터2</span></template> -->
+                  </FilterBox>
+              </div>
+              <textarea class="write-box" @input="write">
+
+              </textarea>
+            <button @click="publish()" class="newBtn">등록하기</button>
         </div>
     </div> 
 </template>
@@ -12,6 +38,11 @@
 <script>
     export default {
         name : 'Detail',
+        data(){
+          return {
+            modify : false
+          }
+        },
         props : {
             posts : Array
         }
