@@ -5,8 +5,9 @@
       <h1>MY BLOG LIST</h1>  
       <!-- tab01 -->
       <button @click="step = 1" v-if="step == 0" class="newBtn">+ 새글 작성하기</button>
-      <div v-if="step == 0" class="list">
-        <List v-for="(a,i) in posts" :key="i" :post="posts[i]" :idx="i" @modiIdx="modiIdx = $event"/>
+      <h3>{{id}}</h3>
+      <div v-if="step == 0" class="list" @modiIdx="modiidx = $event">
+        <List v-for="(a,i) in posts" :key="i" :post="posts[i]" :idx="i"/>
       </div>
       <!-- tab02 -->
       <div v-if="step == 1">
@@ -67,7 +68,12 @@ export default {
       input : '',
       uploaded : false,
       idx : '',
-      modiIdx : ''
+      modiidx:''
+    }
+  },
+  computed: {
+    id() {
+      return this.$route.params.id
     }
   },
   components : {
@@ -85,7 +91,10 @@ export default {
       this.input = $event.target.value
     },
     publish() {
+      var length = this.posts.length;
+      console.log(length)
       var 새게시물 = {
+        id : length++,
         postImage: this.img,
         date: dayjs().format("YYYY-MM-DD"),
         content: this.input,
@@ -97,6 +106,7 @@ export default {
     }
   },
   mounted() {
+    console.log("modiidx값은 ?? " + this.modiidx)
     // console.log("현재 post 글" + JSON.stringify(this.posts))
     this.emitter.on('click', (a)=> {
       this.clickedFilter = a
@@ -106,14 +116,17 @@ export default {
     })
     this.emitter.on('modify', (modiPost)=> {
       var 수정게시물 = {
+        id : modiPost.id,
         postImage: modiPost.postImage,
         date: modiPost.date,
         content: modiPost.content,
         filter: modiPost.filter
       };
       // console.log("수정게시물" + JSON.stringify(수정게시물) + "idx는 " + modiIdx)
-      this.posts[this.modiIdx] = 수정게시물
-      console.log(JSON.stringify(this.posts))
+      // console.log("id" + this.id)
+      this.posts[modiPost.id] = 수정게시물
+      // console.log("idx" + idx)
+      // console.log(JSON.stringify(this.posts))
     })
   }
   
@@ -132,7 +145,7 @@ export default {
     padding: 70px;
     position: relative;
   }
-  .postcont .newBtn {margin-bottom: 30px;}
+  .postcont .newBtn {margin-bottom: 30px;margin-top: 30px;}
   .postcont>Div:nth-child(2) button {margin-top: 30px;}
   .postcont button:hover {opacity: 0.85;}
   .postcont>h1 {font-size: 6rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
