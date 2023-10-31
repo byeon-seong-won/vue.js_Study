@@ -27,6 +27,8 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  border: 0.2rem solid #666;
+  margin-top: 80px;
 }
 .content>h1 {text-align: center;font-size: 12rem;font-family: 'Acme', sans-serif;color: #fff;text-transform: uppercase;margin-bottom: 50px;position: absolute;top: 50%;
 left: 50%;transform: translate(-50%,-50%);}
