@@ -4,7 +4,7 @@
         <router-link to="/">BYSEONG</router-link>
       </h1>
       <div>
-        <router-link to="/post">Blog List</router-link>
+        <router-link to="/post" @click="$emit('menuClick')">Blog List</router-link>
       </div>
     </div>
 </template>
