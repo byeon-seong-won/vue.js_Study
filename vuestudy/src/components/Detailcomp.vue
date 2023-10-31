@@ -1,7 +1,7 @@
 <template>
     <div class="detail">
         <p class="date">{{posts[$route.params.id].date}} 의 일상</p>
-        <button @click="modifystate=true; $emit('modiIdx', this.$route.params.id)">수정하기</button>
+        <button @click="modifystate=true">수정하기</button>
         <div v-if="modifystate == false">
             <div class="post-body" :style="{ backgroundImage : `url('${posts[$route.params.id]. postImage}')`}" :class="`${posts[$route.params.id].filter}`"></div>
             <div class="post-content">
@@ -15,7 +15,7 @@
               <input @change="modiUd" type="file" id="file"/>
               <label for="file" class="input-plus"></label>
             </ul>
-              <div class="upload-image" :style="{backgroundImage : `url('${modiImg}')` }" :class="clickedFilter">
+              <div class="upload-image" :style="{backgroundImage : `url('${modiImg}')` }" :class="modiFilter">
                 <!-- <div v-if="uploaded == false" class="uploadPz">
                   <img src=".././assets/notfound.png">
                   <h4>이미지를 업로드해주세요!</h4>
@@ -23,7 +23,7 @@
               </div>
               <div class="filters">
                   <p>필터 선택하기</p>
-                  <FilterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i">
+                  <FilterBox :img="modiImg" :filter="filters[i]" v-for="(filter,i) in filters" :key="i">
                     <!-- <template v-slot:b><span>데이터2</span></template> -->
                   </FilterBox>
               </div>
@@ -46,7 +46,11 @@ import FilterBox from './filterboxcomp.vue'
             modiImg : '',
             modiCont : '',
             modiFilter : '',
-            idx : this.$route.params.id
+            filters : [
+              "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
+              "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
+              "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"
+            ]
           }
         },
         props : {
@@ -71,20 +75,21 @@ import FilterBox from './filterboxcomp.vue'
             },
             modify() {
                 var 수정게시물 = {
+                    id : this.$route.params.id,
                     postImage: this.modiImg,
                     date: dayjs().format("YYYY-MM-DD"),
                     content: this.modiCont,
                     filter: this.modiFilter
                 };
                 // console.log("수정게시물" + JSON.stringify(수정게시물))
-                this.emitter.emit("modifyIdx", 수정게시물)
+                this.emitter.emit("modify", 수정게시물)
                 // console.log("detail 수정게시물" + JSON.stringify(수정게시물) + this.idx)
                 // console.log(this.$route.params.id)
                 this.modifystate = false;
                 alert("수정이 완료되었습니다.")
-                this.$router.push('../post')
+                this.$router.push({name: 'Post'})
             }
-        }
+        },
     }
 </script>
 
