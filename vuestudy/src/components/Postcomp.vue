@@ -1,12 +1,12 @@
 
 
 <template>
-    <div class="postcont">
+    <div class="postcont" @menuClick="step = 0">
       <h1>MY BLOG LIST</h1>  
       <!-- tab01 -->
       <button @click="step = 1" v-if="step == 0" class="newBtn">+ 새글 작성하기</button>
       <div v-if="step == 0" class="list">
-        <List v-for="(a,i) in posts" :key="i" :post="posts[i]" :idx="i"/>
+        <List v-for="(a,i) in posts" :key="i" :post="posts[i]" :idx="i" @modiIdx="modiIdx = $event"/>
       </div>
       <!-- tab02 -->
       <div v-if="step == 1">
@@ -66,7 +66,8 @@ export default {
       clickedFilter : '',
       input : '',
       uploaded : false,
-      idx : ''
+      idx : '',
+      modiIdx : ''
     }
   },
   components : {
@@ -96,18 +97,23 @@ export default {
     }
   },
   mounted() {
+    // console.log("현재 post 글" + JSON.stringify(this.posts))
     this.emitter.on('click', (a)=> {
       this.clickedFilter = a
     })
     this.emitter.on('remove', (a)=> {
       return this.posts.splice(a,1)
     })
-    this.emitter.on('modify', (img,date,input,filter,idx)=> {
-      console.log("받음" + img,date,input,filter,idx)
-      this.posts[idx].postImage = img;
-      this.posts[idx].date = date;
-      this.posts[idx].content = input;
-      this.posts[idx].filter = filter;
+    this.emitter.on('modify', (modiPost)=> {
+      var 수정게시물 = {
+        postImage: modiPost.postImage,
+        date: modiPost.date,
+        content: modiPost.content,
+        filter: modiPost.filter
+      };
+      // console.log("수정게시물" + JSON.stringify(수정게시물) + "idx는 " + modiIdx)
+      this.posts[this.modiIdx] = 수정게시물
+      console.log(JSON.stringify(this.posts))
     })
   }
   
@@ -129,8 +135,8 @@ export default {
   .postcont .newBtn {margin-bottom: 30px;}
   .postcont>Div:nth-child(2) button {margin-top: 30px;}
   .postcont button:hover {opacity: 0.85;}
-  .postcont>h1 {font-size: 4rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
-  .postcont>div.list {display: grid;grid-template-columns: repeat(2, 1fr);gap: 50px;cursor: pointer;}
+  .postcont>h1 {font-size: 6rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
+  .postcont>div.list {display: grid;grid-template-columns: repeat(2, 1fr);gap: 50px;}
   .postcont>div.list>div {padding: 40px 20px;background-color: #eee;color: #333;border-radius: 2rem;font-size: 20px;min-height: 500px}
 
 
