@@ -109,7 +109,7 @@ import FilterBox from './filterboxcomp.vue'
     text-align: left;
     margin: 0 auto;
     position: relative;
-    padding: 200px 0;
+    padding: 250px 0;
     }
     .detail>h1 {font-size: 6rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
 st-header {height: 30px;padding: 10px;}
