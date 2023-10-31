@@ -32,13 +32,13 @@
 
       <!-- tab03 -->
       <div v-if="step == 2">
-          <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter"></div>
-          <div class="write">
-            <textarea class="write-box" @input="write">
-              
-            </textarea>
-          </div>
-          <button @click="publish()" class="newBtn">등록하기</button>
+        <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter"></div>
+        <div class="write">
+          <textarea class="write-box" @input="write">
+            
+          </textarea>
+        </div>
+        <button @click="publish()" class="newBtn">등록하기</button>
       </div>
     </div>
 </template>
@@ -47,6 +47,7 @@
 
 
 <script>
+import dayjs from 'dayjs'
 import data from '.././assets/data.js'
 import FilterBox from './filterboxcomp.vue'
 import List from './Listcomp.vue'
@@ -85,7 +86,7 @@ export default {
     publish() {
       var 새게시물 = {
         postImage: this.img,
-        date: "Oct 30",
+        date: dayjs().format("YYYY-MM-DD"),
         content: this.input,
         filter: this.clickedFilter
       };
