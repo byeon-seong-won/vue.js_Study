@@ -2,7 +2,7 @@
     <div class="menu">
       <div class="nav">
         <h1>
-          <router-link to="/">BYSEONG</router-link>
+          <router-link to="/vueblog">BYSEONG</router-link>
         </h1>
         <div>
           <router-link to="/post" @click="$emit('menuClick')">Blog List</router-link>
