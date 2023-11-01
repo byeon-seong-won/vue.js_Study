@@ -47,5 +47,17 @@ export default {
   .content>h1 {font-size: 10rem;}
 
 }
+@media (max-width: 1024px) {
+  .content {
+    width: 100%;
+    height: 100vh;
+    padding: 70px;
+    border-radius: 0;
+    margin: 0;
+  }
+}
+@media (max-width:768px) {
+  .content>h1 {font-size: 7rem;}
+}
 
 </style>
