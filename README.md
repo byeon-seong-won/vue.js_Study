@@ -4,7 +4,8 @@
 
 
 <h2>Site Map</h2>
-<img alt="image" src="https://github.com/byeon-seong-won/vue.js_blog_project/assets/136781516/d36a1473-17c3-404b-9bba-46bd27b022e3"
+<img alt="image" src="[https://github.com/byeon-seong-won/vue.js_blog_project/assets/136781516/d36a1473-17c3-404b-9bba-46bd27b022e3](https://github.com/byeon-seong-won/vue.js_blog_project/assets/136781516/a31d79ae-69d0-41d7-ad3c-3eccea6e65c9)"
+
 
 
 
@@ -13,41 +14,41 @@
 <br>
 
 <h1> Pages </h1>
-: 총 3 페이지 (Home | List | Detail)
+: 총 3 페이지 (Main | Post | Detail)
+컴포넌트 분리 (Maincom.vue + Postcomp.vue + Detailcomp.vue + Menucomp.vue + Listcomp.vue + Filterboxcomp.vue)
 <br>
 
-🔧 Home Page (App.js)
-<p>- Router를 이용해 페이지 나누기</p>
-<p>- node.js와 mysql 연동으로 DB에 있는 데이터로 가져오기</p>
-<p>- createSlice.js 파일과 컴포넌트를 분리/p>
-<p>- axios get을 통해 상품 데이터 "더보기" 버튼 클릭시 보여주기(+map 반복문으로 레이아웃 구성)</p>
-<p>- 상품 이미지를 클릭하면 해당 상품 Detail page로 이동</p>
-<p>- useEffect와 addEventListener를 이용한 헤더 스크롤 이벤트 구현</p>
+
+🔧 Main Page (Maincom.vue)
+<p>- menu</p>
 <br>
 <br>
 
-🔧 Detail Page (detail.js)
-<p>- redux로 상태관리(index.js)</p>
-<p>- 장바구니 담기 클릭시 이중 모달창 : 확인 모달창 노출 -> 확인 클릭시 장바구니로 이동되며 수량 +1 </p>
-<p>- 장바구니 담기 버튼 클릭시 이중 모달창 : 확인 모달창 노출 -> 확인 클릭시 장바구니로 이동되며 수량 +1 </p>
-<p>- 구매하기 버튼 클릭시 해당 상품 수량 +1, 장바구니 페이지 바로이동</p>
-<p>- 장바구니에 중복 상품 있을 경우 수량 +1, 없을 경우 항목 추가</p>
-<p>- 탭 기능 구현(+애니메이션 효과)</p>
-<p>- 하단 탭메뉴1 공간, 배경색 클릭시 해당 이미지와 배경색상 노출</p>
-<p>- 하단 탭메뉴2 각 텍스트 아코디언 메뉴로 노출</p>
+🔧 Post Page (Postcomp.vue) : 포스트 리스트 전체 노출
+<p>- CRUD : 추가 수정 삭제 읽기 가능</p>
+<p>- v-for을 이용한 리스트 전체 노출 (List component)</p>
+<p>- ++ 삭제 클릭 시 해당 포스트 리스트에서 삭제</p>
+<p>- ++ 새 글 작성 클릭 시 v-if를 이용한 단계별 업로드 페이지 노출</p>
+<p>- 단계별 빈 내용 check 함수 -> 비어있을 경우 alert 노출</p>
+<p>- Step 1 : </p>
+<p>- 1) 이미지 업로드 (v-if을 이용해 이미지 업로드 전 notfound 이미지 노출) </p>
+<p>- 2) $emit을 이용한 이미지 필터 선택 (Filter component) </p>
+<p>- Step 2 : </p>
+<p>- 1) step1의 이미지 노출 </p>
+<p>- 2) 텍스트 업로드 </p>
 <br>
 <br>
 
-🔧 Cart Page (cart.js)
-<p>- redux로 상태관리(index.js)</p>
-<p>- 수량 변경 버튼(+수량이 음수가 되지 않도록  alert 창 노출)</p>
-<p>- Detail Page에서 같은 상품을 주문하면 항목추가가 아닌 수량증가가 되는 기능</p>
-<p>- 장바구니 항목 삭제 버튼 클릭시 -> 확인 모달창 노출 -> 확인 클릭시 삭제</p>
-<p>- 각 상품별 수량에 따른 가격변동과 총 합계 금액 계산</p>
-
-
+🔧 Detail Page (Detailcomp.vue) : 포스트 상세페이지
+<p>- ++ 상세보기 클릭 시 해당 포스트 상세페이지로 이동</p>
+<p>- 수정하기 클릭 시 v-if를 이용한 수정 페이지 노출</p>
+<p>- 수정 이미지 업로드 (v-if을 이용해 이미지 업로드 전 notfound 이미지 노출)</p>
+<p>- 이미지 업로드 미완료 및 빈 내용 check 함수</p>
+<p>- $emit을 이용한 이미지 필터 선택 (Filter component)</p>
+<p>- 수정완료 클릭 시 수정된 내용으로 변경되며 리스트 페이지로 이동</p>
 <br>
 <br>
+
 
 
 
