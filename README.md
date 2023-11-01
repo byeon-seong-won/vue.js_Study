@@ -13,7 +13,7 @@
 <br>
 
 <h1> Pages </h1>
-: 총 3 페이지 (Main | Post | Detail)
+: 총 3 페이지 (Main | Post | Detail) <br>
 컴포넌트 분리 (Maincom.vue + Postcomp.vue + Detailcomp.vue + Menucomp.vue + Listcomp.vue + Filterboxcomp.vue)
 <br>
 
