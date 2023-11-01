@@ -181,28 +181,21 @@ export default {
 }
 .write-box:focus {outline: none;}
 
+
 @media (max-width: 1920px) {
   .postcont {padding-top: 200px;}
   .postcont>h1 {font-size: 5rem;}
   .postcont>div.list>div {padding: 20px;}
-
 }
 @media (min-width: 1440px) and (max-width: 1920px) {
   .postcont {width: calc(100% - 200px);}
-
 }
-
-
 @media (min-width: 1440px) {
   .postcont {width: calc(100% - 200px);}
-  /* .postcont>div {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;} */
-  /* .postcont>div>div {padding: 30px;} */
 }
-
 @media (max-width: 1024px) {
   .postcont {width: calc(100% - 80px);}
   .postcont>div.list {display: grid;grid-template-columns: repeat(1, 1fr);gap: 100px;}
-  /* .postcont>div>div {padding: 20px;} */
 }
 @media (max-width: 768px) {
   .postcont {width: calc(100% - 40px);}
