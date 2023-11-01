@@ -6,7 +6,7 @@ import Detail from './components/Detailcomp.vue'
 
 const routes = [
   {
-    path: "/",
+    path: "/vueblog",
     component: Main,
   },
   {
