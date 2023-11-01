@@ -4,8 +4,7 @@
 
 
 <h2>Site Map</h2>
-<img alt="image" src="[https://github.com/byeon-seong-won/vue.js_blog_project/assets/136781516/d36a1473-17c3-404b-9bba-46bd27b022e3](https://github.com/byeon-seong-won/vue.js_blog_project/assets/136781516/a31d79ae-69d0-41d7-ad3c-3eccea6e65c9)"
-
+<img alt="image" src="https://github.com/byeon-seong-won/vue.js_blog_project/assets/136781516/f334622f-eec1-4a40-ad5c-006214df4996"
 
 
 
