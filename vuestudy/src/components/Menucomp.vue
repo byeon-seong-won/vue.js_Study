@@ -71,8 +71,18 @@ export default {
   .menu>div>div>a,.menu>div>h1>a {font-size: 16px;}
 }
 
-@media (min-width: 1024px) and (max-width: 1500px){
+@media (min-width: 1440px) and (max-width: 1500px) {
   .menu>div {padding: 10px;width: calc(100% - 200px);}
+}
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .menu>div {padding: 10px;width: calc(100% - 160px);}
+}
+@media (max-width: 1024px) {
+  .menu>div {padding: 10px;width: calc(100% - 80px);}
+}
+@media (max-width: 768px) {
+  .menu {top: 30px;}
+  .menu>div {padding: 10px;width: calc(100% - 40px);}
 }
 
 </style>
