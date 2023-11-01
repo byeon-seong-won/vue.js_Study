@@ -27,7 +27,7 @@
               <FilterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i"></FilterBox>
           </div>
           <button @click="step = 0" class="newBtn goback">취소하기</button>
-          <button @click="step = 2" class="newBtn">다음단계로</button>
+          <button @click="checkImg();" class="newBtn">다음단계로</button>
       </div>
       <!-- tab03 -->
       <div v-if="step == 2">
@@ -37,7 +37,7 @@
           <textarea class="write-box" @input="write" placeholder="블로그에 업로드 할 내용을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '블로그에 업로드 할 내용을 입력해주세요.'"></textarea>
         </div>
         <button @click="step = 0" class="newBtn goback">취소하기</button>
-        <button @click="publish()" class="newBtn">등록하기</button>
+        <button @click="checkInput();" class="newBtn">등록하기</button>
       </div>
     </div>
 </template>
@@ -67,11 +67,6 @@ export default {
       modiidx:''
     }
   },
-  computed: {
-    id() {
-      return this.$route.params.id
-    }
-  },
   components : {
     FilterBox,
     List
@@ -85,6 +80,22 @@ export default {
     },
     write($event) {
       this.input = $event.target.value
+    },
+    checkImg() {
+      if(this.uploaded == false) {
+        alert('이미지를 업로드해주세요!')
+        return;
+      } else {
+        this.step = 2;
+      }
+    },
+    checkInput() {
+      if(this.input == '') {
+        alert('내용을 입력해주세요')
+        return;
+      } else {
+        this.publish();
+      }
     },
     publish() {
       var length = this.posts.length;
@@ -176,22 +187,29 @@ export default {
   .postcont>div.list>div {padding: 20px;}
 
 }
-@media (min-width: 1500px) and (max-width: 1920px) {
+@media (min-width: 1440px) and (max-width: 1920px) {
   .postcont {width: calc(100% - 200px);}
 
 }
 
 
-@media (max-width: 1440px) {
+@media (min-width: 1440px) {
   .postcont {width: calc(100% - 200px);}
-  .postcont>div {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}
-  .postcont>div>div {padding: 30px;}
+  /* .postcont>div {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;} */
+  /* .postcont>div>div {padding: 30px;} */
 }
+
 @media (max-width: 1024px) {
-  .postcont {width: calc(100% - 200px);}
-  .postcont>div {display: grid;grid-template-columns: repeat(1, 1fr);gap: 30px;}
-  .postcont>div>div {padding: 20px;}
+  .postcont {width: calc(100% - 80px);}
+  .postcont>div.list {display: grid;grid-template-columns: repeat(1, 1fr);gap: 100px;}
+  /* .postcont>div>div {padding: 20px;} */
 }
-
+@media (max-width: 768px) {
+  .postcont {width: calc(100% - 40px);}
+  .postcont>h1 {font-size: 3rem;margin-bottom: 0;}
+  .post .detailBtn button {width: 45%;padding: 0.8rem 0;}
+  .postcont h4.stepTitle {font-size: 18px;}
+  .postcont {padding-top: 150px;}
+}
 
 </style>
