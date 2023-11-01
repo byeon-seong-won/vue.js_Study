@@ -143,7 +143,7 @@ export default {
 }
 .postcont>h1 {font-size: 6rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
 .postcont>div.list {display: grid;grid-template-columns: repeat(2, 1fr);row-gap: 150px;column-gap: 50px;}
-.postcont>div.list>div {border: 0.13rem solid #888;padding: 30px 40px;background-color: whitesmoke;color: #333;border-radius: 2rem;font-size: 20px;min-height: 500px}
+.postcont>div.list>div {border: 0.13rem solid #ddd;padding: 30px 40px;background-color: whitesmoke;color: #333;border-radius: 2rem;font-size: 20px;min-height: 500px}
 .postcont button:hover {opacity: 0.85;}
 .postcont button.newBtn {margin-bottom: 30px;margin-top: 30px;}
 .postcont button.newBtn.goback {margin-right: 10px;}
