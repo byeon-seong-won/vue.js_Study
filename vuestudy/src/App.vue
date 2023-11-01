@@ -1,22 +1,17 @@
 
 <template>
   <div class="wrap">
-
     <!-- menu -->
     <Menu/>
-
-    <!-- main -->
+    <!-- router연결 -->
     <router-view :posts="posts"></router-view>    
-    <!-- <Detail :detail="lists"></Detail> -->
-
-  
   </div>
 </template>
+
 
 <script>
 import data from './assets/data.js'
 import Menu from './components/Menucomp.vue'
-
 export default {
   name : 'App',
   data(){
@@ -27,12 +22,12 @@ export default {
   components : {
     Menu
   },
-  
 }
 </script>
 
+
 <style>
-/* common style */
+/* ///// common style ///// */
 *{ margin: 0;padding: 0;font-family: 'roboto','Noto Sans KR', sans-serif; letter-spacing: -0.03em}
 html, body {width: 100%;height: 100%;position: relative;}
 html {overflow-y: scroll; overflow-x: hidden; } 
@@ -51,25 +46,8 @@ h1,h2,h3,h4,h5,h6 {font-size:100%; font-weight: normal; margin-top: 0; }
 img {vertical-align:top;font-size:0;border:0;}
 /* /// common style /// */
 
-
-
-.wrap {
-  width: 100%;
-  height: 100vh;
-  background-color: #fff;
-
-  /* background-image: url("./assets/main.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover; */
-}
-
-
-
-
-
+.wrap {width: 100%;height: 100vh;background-color: #fff;}
 #app {-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
-
 body {margin : 0;}
 div {box-sizing: border-box;}
 .black-bg {width: 100%; height:100%;background: rgba(0,0,0,0.5);position: fixed; padding: 20px;}
@@ -77,17 +55,11 @@ div {box-sizing: border-box;}
 .room-img {width: 100%;}
 .product {background-color: #eee;margin-bottom: 40px;padding-bottom: 20px;}
 button {background: crimson;color: #fff;border: none;padding: 10px;border-radius: 10px;cursor: pointer;}
-.start {opacity: 0;transition: all 1s;}
-.end {opacity: 1;}
-
 
 /* Transiton */
-.fade-enter-from {opacity: 0;}
+/* .fade-enter-from {opacity: 0;}
 .fade-enter-active {transition: all 1s;}
-.fade-enter-to {opacity: 1;}
-
-
-
+.fade-enter-to {opacity: 1;} */
 
 
 </style>
