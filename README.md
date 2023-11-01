@@ -16,10 +16,11 @@
 : 총 3 페이지 (Main | Post | Detail) <br>
 컴포넌트 분리 (Maincom.vue + Postcomp.vue + Detailcomp.vue + Menucomp.vue + Listcomp.vue + Filterboxcomp.vue)
 <br>
+<br>
 
 
 🔧 Main Page (Maincom.vue)
-<p>- menu</p>
+<p>- menu 클릭 시 /post 블로그 리스트로 이동</p>
 <br>
 <br>
 
