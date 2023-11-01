@@ -30,7 +30,7 @@
             </div>
             <textarea class="write-box modiWrite-box" @input="modiWrite" placeholder="블로그에 업로드 할 내용을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '블로그에 업로드 할 내용을 입력해주세요.'"></textarea>
             <div class="btnClass">
-                <button @click="modify" class="newBtn">수정완료</button>
+                <button @click="check()" class="newBtn">수정완료</button>
                 <router-link to="/post">취소하기</router-link>
             </div>
         </div>
@@ -77,6 +77,14 @@ import FilterBox from './filterboxcomp.vue'
             modiWrite($event) {
               this.modiCont = $event.target.value
             },
+            check() {
+              if((this.uploaded == false) || (this.modiCont == "")) {
+                alert('수정할 내용을 모두 입력해주세요!')
+                return;
+              } else {
+                this.modify();
+              }
+            },
             modify() {
                 var 수정게시물 = {
                     id : this.$route.params.id,
@@ -96,7 +104,7 @@ import FilterBox from './filterboxcomp.vue'
 
 <style>
 .detail {
-  width: calc(100% - 80px);
+  width: calc(100% - 160px);
   max-width: 1200px;
   min-height: 800px;
   text-align: left;
@@ -117,5 +125,12 @@ import FilterBox from './filterboxcomp.vue'
 @media (max-width: 1920px) {
   .detail>h1 {font-size: 5rem;}
 }
-
+@media (max-width: 1024px) {
+  .detail {width: calc(100% - 80px);}
+}
+@media (max-width: 768px) {
+  .detail {width: calc(100% - 40px);padding-top: 150px;}
+  .detail>h1 {font-size: 3rem;margin-bottom: 0;}
+  .upload-image>div.uploadPz>h4 {word-break: keep-all;}
+}
 </style>
