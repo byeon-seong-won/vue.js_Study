@@ -24,30 +24,23 @@
           </div>
           <div class="filters">
               <p>필터 선택하기 <span class="xi-arrow-down"></span></p>
-              <FilterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i">
-                <!-- <template v-slot:b><span>데이터2</span></template> -->
-              </FilterBox>
+              <FilterBox :img="img" :filter="filters[i]" v-for="(filter,i) in filters" :key="i"></FilterBox>
           </div>
           <button @click="step = 0" class="newBtn goback">취소하기</button>
           <button @click="step = 2" class="newBtn">다음단계로</button>
       </div>
-
       <!-- tab03 -->
       <div v-if="step == 2">
         <h4 class="stepTitle">블로그에 업로드 할 내용을 입력해주세요!</h4>
         <div class="upload-image" :style="{backgroundImage : `url('${img}')` }" :class="clickedFilter"></div>
         <div class="write">
-          <textarea class="write-box" @input="write">
-            
-          </textarea>
+          <textarea class="write-box" @input="write" placeholder="블로그에 업로드 할 내용을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '블로그에 업로드 할 내용을 입력해주세요.'"></textarea>
         </div>
         <button @click="step = 0" class="newBtn goback">취소하기</button>
         <button @click="publish()" class="newBtn">등록하기</button>
       </div>
     </div>
 </template>
-
-
 
 
 <script>
@@ -62,7 +55,7 @@ export default {
       posts : data,
       step : 0,
       filters : [
-        "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
+      "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
         "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
         "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"
       ],
@@ -125,103 +118,80 @@ export default {
       this.posts[modiPost.id] = 수정게시물
     })
   }
-  
 }
-
 </script>
 
-
 <style>
- .postcont {
-    width: calc(100% - 80px);
-    max-width: 1400px;
-    min-height: 1200px;
-    margin: 0 auto;
-    position: relative;
-    padding: 250px 0;
-  }
-  .postcont .newBtn {margin-bottom: 30px;margin-top: 30px;}
-  .postcont .newBtn.goback {margin-right: 10px;}
-  .postcont>div:nth-child(2) button {margin-top: 30px;}
-  .postcont button:hover {opacity: 0.85;}
-  .postcont>h1 {font-size: 6rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
-  .postcont>div.list {display: grid;grid-template-columns: repeat(2, 1fr);gap: 50px;}
-  .postcont>div.list>div {padding: 30px 40px;background-color: #eee;color: #333;border-radius: 2rem;font-size: 20px;min-height: 500px}
-.stepTitle {font-size: 22px;margin-bottom: 20px;}
-
-
-
-  .upload-image{
-    width: 100%;
-    height: 500px;
-    margin: 30px auto 50px;
-    text-align: center;
-    background-size : contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    position: relative;
-    border: 0.12rem solid #eee;
-  }
-  .upload-image>div.uploadPz {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
-  .upload-image>div.uploadPz>h4 {font-size: 20px;color: #333;}
-  .upload-image>div.uploadPz>img {width: 100%;}
-.filters{
-overflow-x:scroll;
-white-space: nowrap;
-
+.postcont {
+  width: calc(100% - 160px);
+  max-width: 1400px;
+  min-height: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding: 250px 0;
 }
-.filter-1 {
-width: 100px;
-height: 100px;
-
-background-color: cornflowerblue;
-margin: 10px 10px 10px auto;
-padding: 8px;
-display: inline-block;
-color : white;
-background-size: cover;
+.postcont>h1 {font-size: 6rem;text-align: left;font-family: 'Acme', sans-serif;color: #333;text-transform: uppercase;margin-bottom: 50px;}
+.postcont>div.list {display: grid;grid-template-columns: repeat(2, 1fr);row-gap: 150px;column-gap: 50px;}
+.postcont>div.list>div {padding: 30px 40px;background-color: whitesmoke;color: #333;border-radius: 2rem;font-size: 20px;min-height: 500px}
+.postcont button:hover {opacity: 0.85;}
+.postcont button.newBtn {margin-bottom: 30px;margin-top: 30px;}
+.postcont button.newBtn.goback {margin-right: 10px;}
+.postcont h4.stepTitle {font-size: 22px;margin-bottom: 20px;}
+.upload-image {
+  width: 100%;
+  height: 500px;
+  margin: 30px auto 50px;
+  text-align: center;
+  background-size : contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  position: relative;
+  border: 0.12rem solid #eee;
 }
-.filters::-webkit-scrollbar {
-height: 8px;
-}
-.filters::-webkit-scrollbar-track {
-background: #f1f1f1; 
-}
-.filters::-webkit-scrollbar-thumb {
-background: #09030578;
-border-radius: 5px;
-}
-.filters::-webkit-scrollbar-thumb:hover {
-background: #555; 
-}
+.upload-image>div.uploadPz {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+.upload-image>div.uploadPz>h4 {font-size: 20px;color: #333;}
+.upload-image>div.uploadPz>img {width: 100%;}
+.filters {overflow-x:scroll;white-space: nowrap;}
+.filters::-webkit-scrollbar {height: 8px;}
+.filters::-webkit-scrollbar-track {background: #f1f1f1; }
+.filters::-webkit-scrollbar-thumb {background: #09030578;border-radius: 5px;}
+.filters::-webkit-scrollbar-thumb:hover {background: #555; }
 .write-box {
-border: none;
-width: 100%;
-height: 300px;
-padding: 20px;
-margin: auto;
-display: block;
-outline: none;
-border: 1px solid #aaa;
-box-sizing: border-box;
+  border: none;
+  width: 100%;
+  height: 300px;
+  padding: 20px;
+  margin: auto;
+  display: block;
+  outline: none;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
 }
-
 .write-box:focus {outline: none;}
 
+@media (max-width: 1920px) {
+  .postcont {padding-top: 200px;}
+  .postcont>h1 {font-size: 5rem;}
+  .postcont>div.list>div {padding: 20px;}
+
+}
+@media (min-width: 1500px) and (max-width: 1920px) {
+  .postcont {width: calc(100% - 200px);}
+
+}
 
 
-
-
-  @media (max-width: 1440px) {
-    .postcont>div {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}
-    .postcont>div>div {padding: 30px;}
-  }
-  @media (max-width: 1024px) {
-    .postcont>div {display: grid;grid-template-columns: repeat(1, 1fr);gap: 30px;}
-    .postcont>div>div {padding: 20px;}
-  }
-
+@media (max-width: 1440px) {
+  .postcont {width: calc(100% - 200px);}
+  .postcont>div {display: grid;grid-template-columns: repeat(2, 1fr);gap: 30px;}
+  .postcont>div>div {padding: 30px;}
+}
+@media (max-width: 1024px) {
+  .postcont {width: calc(100% - 200px);}
+  .postcont>div {display: grid;grid-template-columns: repeat(1, 1fr);gap: 30px;}
+  .postcont>div>div {padding: 20px;}
+}
 
 
 </style>
