@@ -4,11 +4,7 @@
     <div @click="sendfilter" :class="filter + ' filter-item'" :style="`background-Image : url(${img})`">
         <span class="filtername">{{filter}}</span>
     </div> 
-   
 </template>
-
-
-
 
 <script>
 export default {
@@ -22,11 +18,8 @@ export default {
             this.emitter.emit('click', this.filter)
         }
     }
-
 }
-
 </script>
-
 
 <style>
 .filter-item {
