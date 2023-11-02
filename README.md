@@ -1,5 +1,5 @@
 <h1> Blog </h1>
-: Vue를 활용한 블로그 SPA 
+: Vue를 활용한 일상 블로그 SPA 
 
 
 
