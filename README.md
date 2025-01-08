@@ -1,14 +1,13 @@
-<h1> Blog </h1>
+<h1> My page </h1>
 : Vue를 활용한 일상 블로그 SPA 
-
-
-
-<h2>Site Map</h2>
-<img alt="image" src="https://github.com/byeon-seong-won/vue.js_blog_project/assets/136781516/f334622f-eec1-4a40-ad5c-006214df4996"
-
-
-
+<br>
 [개인 프로젝트: 2023.10.20 ~ 2023.10.30]
+<br>
+<img alt="image" src="https://github.com/user-attachments/assets/665194dd-2edd-487c-8c56-895ae37b5305" style="width:200px;"/>
+<img alt="image" src="https://github.com/user-attachments/assets/4aaba3ec-3049-41ff-a997-b04bb265e577" style="width:200px;"/>
+<img alt="image" src="https://github.com/user-attachments/assets/c25f47e1-1856-44b3-ba97-344ead14c30f" style="width:200px;"/>
+
+
 <br>
 <br>
 
